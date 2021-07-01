@@ -124,8 +124,8 @@ _rules_gapic_version = "0.5.5"
 
 http_archive(
     name = "rules_gapic",
-    strip_prefix = "rules_gapic-%s" % _rules_gapic_version,
-    urls = ["https://github.com/googleapis/rules_gapic/archive/v%s.tar.gz" % _rules_gapic_version],
+    strip_prefix = "rules_gapic-8c65996e8a97566f203848df36220c3f383321fd",
+    urls = ["https://github.com/jpoehnelt/rules_gapic/archive/8c65996e8a97566f203848df36220c3f383321fd.tar.gz"],
 )
 
 load("@rules_gapic//:repositories.bzl", "rules_gapic_repositories")
