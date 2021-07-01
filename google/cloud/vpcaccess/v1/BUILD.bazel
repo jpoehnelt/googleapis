@@ -68,6 +68,7 @@ java_gapic_library(
     name = "vpcaccess_java_gapic",
     srcs = [":vpcaccess_proto_with_info"],
     grpc_service_config = "vpcaccess_grpc_service_config.json",
+    service_yaml = "vpcaccess_v1.yaml",
     test_deps = [
         ":vpcaccess_java_grpc",
     ],
@@ -93,6 +94,12 @@ java_gapic_assembly_gradle_pkg(
         ":vpcaccess_java_proto",
         ":vpcaccess_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-vpcaccess-v1-java",
+    actual = ":vpcaccess-v1-go",
+    deprecated = "Please use :vpcaccess-v1-java.",
 )
 
 ##############################################################################
@@ -150,6 +157,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-vpcaccess-v1-go",
+    actual = ":vpcaccess-v1-go",
+    deprecated = "Please use :vpcaccess-v1-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -163,7 +176,7 @@ py_gapic_library(
     name = "vpcaccess_py_gapic",
     srcs = [":vpcaccess_proto"],
     grpc_service_config = "vpcaccess_grpc_service_config.json",
-    opt_args = ["warehouse-package-name=google-cloud-vpc-access"]
+    opt_args = ["warehouse-package-name=google-cloud-vpc-access"],
 )
 
 # Open Source Packages
@@ -215,6 +228,12 @@ php_gapic_assembly_pkg(
         ":vpcaccess_php_grpc",
         ":vpcaccess_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-vpcaccess-v1-php",
+    actual = ":vpcaccess-v1-php",
+    deprecated = "Please use :vpcaccess-v1-php.",
 )
 
 ##############################################################################
@@ -271,11 +290,11 @@ ruby_cloud_gapic_library(
     name = "vpcaccess_ruby_gapic",
     srcs = [":vpcaccess_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-vpc_access-v1",
-        "ruby-cloud-env-prefix=VPC_ACCESS",
-        "ruby-cloud-product-url=https://cloud.google.com/vpc/docs/serverless-vpc-access",
         "ruby-cloud-api-id=vpcaccess.googleapis.com",
         "ruby-cloud-api-shortname=vpcaccess",
+        "ruby-cloud-env-prefix=VPC_ACCESS",
+        "ruby-cloud-gem-name=google-cloud-vpc_access-v1",
+        "ruby-cloud-product-url=https://cloud.google.com/vpc/docs/serverless-vpc-access",
     ],
     grpc_service_config = "vpcaccess_grpc_service_config.json",
     ruby_cloud_description = "Serverless VPC Access enables you to connect from a serverless environment on Google Cloud (Cloud Run, Cloud Functions, or the App Engine standard environment) directly to your VPC network. This connection makes it possible for your serverless environment to access Compute Engine VM instances, Memorystore instances, and any other resources with an internal IP address.",
@@ -294,6 +313,12 @@ ruby_gapic_assembly_pkg(
         ":vpcaccess_ruby_grpc",
         ":vpcaccess_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-vpcaccess-v1-ruby",
+    actual = ":vpcaccess-v1-ruby",
+    deprecated = "Please use :vpcaccess-v1-ruby.",
 )
 
 ##############################################################################
@@ -337,6 +362,12 @@ csharp_gapic_assembly_pkg(
         ":vpcaccess_csharp_grpc",
         ":vpcaccess_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-vpcaccess-v1-csharp",
+    actual = ":vpcaccess-v1-csharp",
+    deprecated = "Please use :vpcaccess-v1-csharp.",
 )
 
 ##############################################################################

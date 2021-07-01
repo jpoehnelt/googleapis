@@ -63,12 +63,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
     "py_gapic_library",
 )
 
 py_gapic_library(
     name = "servicemesh_py_gapic",
     srcs = [":servicemesh_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "gkehub-servicemesh-v1alpha-py",
+    deps = [
+        ":servicemesh_py_gapic",
+    ],
 )
 
 ##############################################################################

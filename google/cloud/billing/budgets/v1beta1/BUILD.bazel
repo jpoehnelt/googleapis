@@ -72,6 +72,7 @@ java_gapic_library(
     name = "budgets_java_gapic",
     srcs = [":budgets_proto_with_info"],
     grpc_service_config = "billingbudgets_grpc_service_config.json",
+    service_yaml = "billingbudgets.yaml",
     test_deps = [
         ":budgets_java_grpc",
     ],
@@ -97,6 +98,12 @@ java_gapic_assembly_gradle_pkg(
         ":budgets_java_proto",
         ":budgets_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-billing-budgets-v1beta1-java",
+    actual = ":billing-budgets-v1beta1-go",
+    deprecated = "Please use :billing-budgets-v1beta1-java.",
 )
 
 ##############################################################################
@@ -152,6 +159,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-billing-budgets-v1beta1-go",
+    actual = ":billing-budgets-v1beta1-go",
+    deprecated = "Please use :billing-budgets-v1beta1-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -201,6 +214,7 @@ php_gapic_library(
     name = "budgets_php_gapic",
     srcs = [":budgets_proto_with_info"],
     grpc_service_config = "billingbudgets_grpc_service_config.json",
+    service_yaml = "billingbudgets.yaml",
     deps = [
         ":budgets_php_grpc",
         ":budgets_php_proto",
@@ -215,6 +229,12 @@ php_gapic_assembly_pkg(
         ":budgets_php_grpc",
         ":budgets_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-billing-budgets-v1beta1-php",
+    actual = ":billing-budgets-v1beta1-php",
+    deprecated = "Please use :billing-budgets-v1beta1-php.",
 )
 
 ##############################################################################
@@ -296,6 +316,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-billing-budgets-v1beta1-ruby",
+    actual = ":billing-budgets-v1beta1-ruby",
+    deprecated = "Please use :billing-budgets-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -337,6 +363,12 @@ csharp_gapic_assembly_pkg(
         ":budgets_csharp_grpc",
         ":budgets_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-billing-budgets-v1beta1-csharp",
+    actual = ":billing-budgets-v1beta1-csharp",
+    deprecated = "Please use :billing-budgets-v1beta1-csharp.",
 )
 
 ##############################################################################

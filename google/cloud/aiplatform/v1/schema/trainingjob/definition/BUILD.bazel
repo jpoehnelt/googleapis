@@ -71,44 +71,18 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
     "py_gapic_assembly_pkg",
     "py_gapic_library",
-    "py_grpc_library",
-    "py_proto_library",
-)
-
-moved_proto_library(
-    name = "definition_moved_proto",
-    srcs = [":definition_proto"],
-    deps = [
-        "//google/api:annotations_proto",
-    ],
-)
-
-py_proto_library(
-    name = "definition_py_proto",
-    deps = [":definition_moved_proto"],
-)
-
-py_grpc_library(
-    name = "definition_py_grpc",
-    srcs = [":definition_moved_proto"],
-    deps = [":definition_py_proto"],
 )
 
 py_gapic_library(
     name = "definition_py_gapic",
     srcs = [":definition_proto"],
-    opt_args = [
-        "python-gapic-namespace=google.cloud.aiplatform.v1.schema.trainingjob",
-        "python-gapic-name=definition",
-    ],
 )
 
 # Open Source Packages
 py_gapic_assembly_pkg(
-    name = "definition_py",
+    name = "definition-{{version}}-py",
     deps = [
         ":definition_py_gapic",
     ],
@@ -142,6 +116,7 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
 
 ##############################################################################
 # Ruby

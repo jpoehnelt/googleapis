@@ -69,6 +69,7 @@ java_gapic_library(
     name = "apigeeconnect_java_gapic",
     srcs = [":apigeeconnect_proto_with_info"],
     grpc_service_config = "connection_grpc_service_config.json",
+    service_yaml = "apigeeconnect_v1.yaml",
     test_deps = [
         ":apigeeconnect_java_grpc",
     ],
@@ -95,6 +96,12 @@ java_gapic_assembly_gradle_pkg(
         ":apigeeconnect_java_proto",
         ":apigeeconnect_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apigeeconnect-v1-java",
+    actual = ":apigeeconnect-v1-go",
+    deprecated = "Please use :apigeeconnect-v1-java.",
 )
 
 ##############################################################################
@@ -150,6 +157,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-apigeeconnect-v1-go",
+    actual = ":apigeeconnect-v1-go",
+    deprecated = "Please use :apigeeconnect-v1-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -163,7 +176,7 @@ py_gapic_library(
     name = "apigeeconnect_py_gapic",
     srcs = [":apigeeconnect_proto"],
     grpc_service_config = "connection_grpc_service_config.json",
-    opt_args = ["warehouse-package-name=google-cloud-apigee-connect"]
+    opt_args = ["warehouse-package-name=google-cloud-apigee-connect"],
 )
 
 # Open Source Packages
@@ -215,6 +228,12 @@ php_gapic_assembly_pkg(
         ":apigeeconnect_php_grpc",
         ":apigeeconnect_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apigeeconnect-v1-php",
+    actual = ":apigeeconnect-v1-php",
+    deprecated = "Please use :apigeeconnect-v1-php.",
 )
 
 ##############################################################################
@@ -271,11 +290,11 @@ ruby_cloud_gapic_library(
     name = "apigeeconnect_ruby_gapic",
     srcs = [":apigeeconnect_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-apigee_connect-v1",
-        "ruby-cloud-env-prefix=APIGEE_CONNECT",
-        "ruby-cloud-product-url=https://cloud.google.com/apigee/docs/hybrid/v1.4/apigee-connect",
         "ruby-cloud-api-id=apigeeconnect.googleapis.com",
         "ruby-cloud-api-shortname=apigeeconnect",
+        "ruby-cloud-env-prefix=APIGEE_CONNECT",
+        "ruby-cloud-gem-name=google-cloud-apigee_connect-v1",
+        "ruby-cloud-product-url=https://cloud.google.com/apigee/docs/hybrid/v1.4/apigee-connect",
     ],
     grpc_service_config = "connection_grpc_service_config.json",
     ruby_cloud_description = "Apigee Connect allows the Apigee hybrid management plane to connect securely to the MART service in the runtime plane without requiring you to expose the MART endpoint on the internet. If you use Apigee Connect, you do not need to configure the MART ingress gateway with a host alias and an authorized DNS certificate.",
@@ -294,6 +313,12 @@ ruby_gapic_assembly_pkg(
         ":apigeeconnect_ruby_grpc",
         ":apigeeconnect_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apigeeconnect-v1-ruby",
+    actual = ":apigeeconnect-v1-ruby",
+    deprecated = "Please use :apigeeconnect-v1-ruby.",
 )
 
 ##############################################################################
@@ -337,6 +362,12 @@ csharp_gapic_assembly_pkg(
         ":apigeeconnect_csharp_grpc",
         ":apigeeconnect_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apigeeconnect-v1-csharp",
+    actual = ":apigeeconnect-v1-csharp",
+    deprecated = "Please use :apigeeconnect-v1-csharp.",
 )
 
 ##############################################################################

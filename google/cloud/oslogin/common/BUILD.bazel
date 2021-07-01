@@ -6,7 +6,7 @@ package(default_visibility = ["//visibility:public"])
 ##############################################################################
 # Common
 ##############################################################################
-load("@com_google_googleapis_imports//:imports.bzl", "proto_library_with_info")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
     name = "common_proto",
@@ -16,13 +16,6 @@ proto_library(
     deps = [
         "//google/api:field_behavior_proto",
         "//google/api:resource_proto",
-    ],
-)
-
-proto_library_with_info(
-    name = "common_proto_with_info",
-    deps = [
-        ":common_proto",
     ],
 )
 
@@ -78,6 +71,14 @@ py_gapic_library(
     srcs = [":common_proto"],
 )
 
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "common-{{version}}-py",
+    deps = [
+        ":common_py_gapic",
+    ],
+)
+
 ##############################################################################
 # PHP
 ##############################################################################
@@ -106,6 +107,7 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
 
 ##############################################################################
 # Ruby

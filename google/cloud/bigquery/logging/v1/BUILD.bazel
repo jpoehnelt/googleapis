@@ -66,23 +66,18 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
     "py_gapic_library",
-    "py_gapic_assembly_pkg"
 )
 
 py_gapic_library(
     name = "logging_py_gapic",
     srcs = [":logging_proto"],
-    opt_args = [
-        "warehouse-package-name=google-cloud-bigquery-logging",
-        "python-gapic-namespace=google.cloud",
-        "python-gapic-name=bigquery_logging",
-    ],
 )
 
 # Open Source Packages
 py_gapic_assembly_pkg(
-    name = "google-cloud-bigquery-logging-v1-py",
+    name = "bigquery-logging-v1-py",
     deps = [
         ":logging_py_gapic",
     ],

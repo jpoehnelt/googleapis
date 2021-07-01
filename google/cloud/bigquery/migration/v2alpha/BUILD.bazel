@@ -76,6 +76,7 @@ java_gapic_library(
     name = "migration_java_gapic",
     srcs = [":migration_proto_with_info"],
     grpc_service_config = "bigquerymigration_grpc_service_config.json",
+    service_yaml = "bigquerymigration_v2alpha.yaml",
     test_deps = [
         ":migration_java_grpc",
     ],
@@ -101,6 +102,12 @@ java_gapic_assembly_gradle_pkg(
         ":migration_java_proto",
         ":migration_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-bigquery-migration-v2alpha-java",
+    actual = ":bigquery-migration-v2alpha-go",
+    deprecated = "Please use :bigquery-migration-v2alpha-java.",
 )
 
 ##############################################################################
@@ -132,8 +139,8 @@ go_gapic_library(
     srcs = [":migration_proto_with_info"],
     grpc_service_config = "bigquerymigration_grpc_service_config.json",
     importpath = "cloud.google.com/go/bigquery/migration/apiv2alpha;migration",
-    service_yaml = "bigquerymigration_v2alpha.yaml",
     metadata = True,
+    service_yaml = "bigquerymigration_v2alpha.yaml",
     deps = [
         ":migration_go_proto",
     ],
@@ -151,10 +158,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-bigquery-migration-v2alpha-go",
     deps = [
         ":migration_go_gapic",
-        ":migration_go_gapic_srcjar-test.srcjar",
         ":migration_go_gapic_srcjar-metadata.srcjar",
+        ":migration_go_gapic_srcjar-test.srcjar",
         ":migration_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-bigquery-migration-v2alpha-go",
+    actual = ":bigquery-migration-v2alpha-go",
+    deprecated = "Please use :bigquery-migration-v2alpha-go.",
 )
 
 ##############################################################################
@@ -223,6 +236,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-bigquery-migration-v2alpha-php",
+    actual = ":bigquery-migration-v2alpha-php",
+    deprecated = "Please use :bigquery-migration-v2alpha-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -256,8 +275,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -276,9 +295,7 @@ ruby_grpc_library(
 ruby_cloud_gapic_library(
     name = "migration_ruby_gapic",
     srcs = [":migration_proto_with_info"],
-    extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-bigquery-migration-v2alpha",
-    ],
+    extra_protoc_parameters = ["ruby-cloud-gem-name=google-cloud-bigquery-migration-v2alpha"],
     grpc_service_config = "bigquerymigration_grpc_service_config.json",
     deps = [
         ":migration_ruby_grpc",
@@ -294,6 +311,12 @@ ruby_gapic_assembly_pkg(
         ":migration_ruby_grpc",
         ":migration_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-bigquery-migration-v2alpha-ruby",
+    actual = ":bigquery-migration-v2alpha-ruby",
+    deprecated = "Please use :bigquery-migration-v2alpha-ruby.",
 )
 
 ##############################################################################
@@ -337,6 +360,12 @@ csharp_gapic_assembly_pkg(
         ":migration_csharp_grpc",
         ":migration_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-bigquery-migration-v2alpha-csharp",
+    actual = ":bigquery-migration-v2alpha-csharp",
+    deprecated = "Please use :bigquery-migration-v2alpha-csharp.",
 )
 
 ##############################################################################

@@ -69,6 +69,7 @@ java_gapic_library(
     name = "alertcenter_java_gapic",
     srcs = [":alertcenter_proto_with_info"],
     grpc_service_config = "alertcenter_grpc_service_config.json",
+    service_yaml = "alertcenter.yaml",
     test_deps = [
         ":alertcenter_java_grpc",
     ],
@@ -94,6 +95,12 @@ java_gapic_assembly_gradle_pkg(
         ":alertcenter_java_proto",
         ":alertcenter_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apps-alertcenter-v1beta1-java",
+    actual = ":apps-alertcenter-v1beta1-go",
+    deprecated = "Please use :apps-alertcenter-v1beta1-java.",
 )
 
 ##############################################################################
@@ -123,8 +130,8 @@ go_gapic_library(
     srcs = [":alertcenter_proto_with_info"],
     grpc_service_config = "alertcenter_grpc_service_config.json",
     importpath = "google.golang.org/google/apps/alertcenter/v1beta1;alertcenter",
-    service_yaml = "alertcenter.yaml",
     metadata = True,
+    service_yaml = "alertcenter.yaml",
     deps = [
         ":alertcenter_go_proto",
     ],
@@ -142,10 +149,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-apps-alertcenter-v1beta1-go",
     deps = [
         ":alertcenter_go_gapic",
-        ":alertcenter_go_gapic_srcjar-test.srcjar",
         ":alertcenter_go_gapic_srcjar-metadata.srcjar",
+        ":alertcenter_go_gapic_srcjar-test.srcjar",
         ":alertcenter_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-apps-alertcenter-v1beta1-go",
+    actual = ":apps-alertcenter-v1beta1-go",
+    deprecated = "Please use :apps-alertcenter-v1beta1-go.",
 )
 
 ##############################################################################
@@ -214,6 +227,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-apps-alertcenter-v1beta1-php",
+    actual = ":apps-alertcenter-v1beta1-php",
+    deprecated = "Please use :apps-alertcenter-v1beta1-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -247,8 +266,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -267,9 +286,7 @@ ruby_grpc_library(
 ruby_cloud_gapic_library(
     name = "alertcenter_ruby_gapic",
     srcs = [":alertcenter_proto_with_info"],
-    extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-apps-alertcenter-v1beta1",
-    ],
+    extra_protoc_parameters = ["ruby-cloud-gem-name=google-cloud-apps-alertcenter-v1beta1"],
     grpc_service_config = "alertcenter_grpc_service_config.json",
     deps = [
         ":alertcenter_ruby_grpc",
@@ -285,6 +302,12 @@ ruby_gapic_assembly_pkg(
         ":alertcenter_ruby_grpc",
         ":alertcenter_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apps-alertcenter-v1beta1-ruby",
+    actual = ":apps-alertcenter-v1beta1-ruby",
+    deprecated = "Please use :apps-alertcenter-v1beta1-ruby.",
 )
 
 ##############################################################################
@@ -328,6 +351,12 @@ csharp_gapic_assembly_pkg(
         ":alertcenter_csharp_grpc",
         ":alertcenter_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-apps-alertcenter-v1beta1-csharp",
+    actual = ":apps-alertcenter-v1beta1-csharp",
+    deprecated = "Please use :apps-alertcenter-v1beta1-csharp.",
 )
 
 ##############################################################################

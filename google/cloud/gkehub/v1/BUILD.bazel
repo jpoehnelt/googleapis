@@ -73,6 +73,7 @@ java_gapic_library(
     name = "gkehub_java_gapic",
     srcs = [":gkehub_proto_with_info"],
     grpc_service_config = "v1_grpc_service_config.json",
+    service_yaml = "gkehub_v1.yaml",
     test_deps = [
         ":gkehub_java_grpc",
     ],
@@ -98,6 +99,12 @@ java_gapic_assembly_gradle_pkg(
         ":gkehub_java_proto",
         ":gkehub_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1-java",
+    actual = ":gkehub-v1-go",
+    deprecated = "Please use :gkehub-v1-java.",
 )
 
 ##############################################################################
@@ -129,13 +136,13 @@ go_gapic_library(
     srcs = [":gkehub_proto_with_info"],
     grpc_service_config = "v1_grpc_service_config.json",
     importpath = "cloud.google.com/go/gkehub/apiv1;gkehub",
-    service_yaml = "gkehub_v1.yaml",
     metadata = True,
+    service_yaml = "gkehub_v1.yaml",
     deps = [
         ":gkehub_go_proto",
         "//google/longrunning:longrunning_go_proto",
-        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@com_google_cloud_go//longrunning:go_default_library",
+        "@com_google_cloud_go//longrunning/autogen:go_default_library",
     ],
 )
 
@@ -151,10 +158,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-gkehub-v1-go",
     deps = [
         ":gkehub_go_gapic",
-        ":gkehub_go_gapic_srcjar-test.srcjar",
         ":gkehub_go_gapic_srcjar-metadata.srcjar",
+        ":gkehub_go_gapic_srcjar-test.srcjar",
         ":gkehub_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-gkehub-v1-go",
+    actual = ":gkehub-v1-go",
+    deprecated = "Please use :gkehub-v1-go.",
 )
 
 ##############################################################################
@@ -178,8 +191,6 @@ py_gapic_assembly_pkg(
     name = "gkehub-v1-py",
     deps = [
         ":gkehub_py_gapic",
-        "//google/cloud/gkehub/v1/configmanagement:configmanagement_py_gapic",
-        "//google/cloud/gkehub/v1/multiclusteringress:multiclusteringress_py_gapic",
     ],
 )
 
@@ -226,6 +237,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-gkehub-v1-php",
+    actual = ":gkehub-v1-php",
+    deprecated = "Please use :gkehub-v1-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -251,8 +268,6 @@ nodejs_gapic_assembly_pkg(
     deps = [
         ":gkehub_nodejs_gapic",
         ":gkehub_proto",
-        "//google/cloud/gkehub/v1/configmanagement:configmanagement_proto",
-        "//google/cloud/gkehub/v1/multiclusteringress:multiclusteringress_proto",
     ],
 )
 
@@ -261,8 +276,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -281,9 +296,7 @@ ruby_grpc_library(
 ruby_cloud_gapic_library(
     name = "gkehub_ruby_gapic",
     srcs = [":gkehub_proto_with_info"],
-    extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-gkehub-v1",
-    ],
+    extra_protoc_parameters = ["ruby-cloud-gem-name=google-cloud-gkehub-v1"],
     grpc_service_config = "v1_grpc_service_config.json",
     deps = [
         ":gkehub_ruby_grpc",
@@ -299,6 +312,12 @@ ruby_gapic_assembly_pkg(
         ":gkehub_ruby_grpc",
         ":gkehub_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1-ruby",
+    actual = ":gkehub-v1-ruby",
+    deprecated = "Please use :gkehub-v1-ruby.",
 )
 
 ##############################################################################
@@ -342,6 +361,12 @@ csharp_gapic_assembly_pkg(
         ":gkehub_csharp_grpc",
         ":gkehub_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1-csharp",
+    actual = ":gkehub-v1-csharp",
+    deprecated = "Please use :gkehub-v1-csharp.",
 )
 
 ##############################################################################

@@ -9,7 +9,7 @@ package(default_visibility = ["//visibility:public"])
 load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
-    name = "resources_proto",
+    name = "sample_proto",
     srcs = [
         "resources.proto",
     ],
@@ -30,14 +30,14 @@ load(
 )
 
 java_proto_library(
-    name = "resources_java_proto",
-    deps = [":resources_proto"],
+    name = "sample_java_proto",
+    deps = [":sample_proto"],
 )
 
 java_grpc_library(
-    name = "resources_java_grpc",
-    srcs = [":resources_proto"],
-    deps = [":resources_java_proto"],
+    name = "sample_java_grpc",
+    srcs = [":sample_proto"],
+    deps = [":sample_java_proto"],
 )
 
 ##############################################################################
@@ -49,13 +49,35 @@ load(
 )
 
 go_proto_library(
-    name = "resources_go_proto",
+    name = "sample_go_proto",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "google.golang.org/genproto/googleapis/maps/playablelocations/v3/sample",
-    protos = [":resources_proto"],
+    protos = [":sample_proto"],
     deps = [
         "//google/api:annotations_go_proto",
         "//google/type:latlng_go_proto",
+    ],
+)
+
+##############################################################################
+# Python
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
+)
+
+py_gapic_library(
+    name = "sample_py_gapic",
+    srcs = [":sample_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "sample-{{version}}-py",
+    deps = [
+        ":sample_py_gapic",
     ],
 )
 
@@ -69,14 +91,14 @@ load(
 )
 
 php_proto_library(
-    name = "resources_php_proto",
-    deps = [":resources_proto"],
+    name = "sample_php_proto",
+    deps = [":sample_proto"],
 )
 
 php_grpc_library(
-    name = "resources_php_grpc",
-    srcs = [":resources_proto"],
-    deps = [":resources_php_proto"],
+    name = "sample_php_grpc",
+    srcs = [":sample_proto"],
+    deps = [":sample_php_proto"],
 )
 
 ##############################################################################
@@ -88,6 +110,7 @@ load(
     "nodejs_gapic_library",
 )
 
+
 ##############################################################################
 # Ruby
 ##############################################################################
@@ -98,14 +121,14 @@ load(
 )
 
 ruby_proto_library(
-    name = "resources_ruby_proto",
-    deps = [":resources_proto"],
+    name = "sample_ruby_proto",
+    deps = [":sample_proto"],
 )
 
 ruby_grpc_library(
-    name = "resources_ruby_grpc",
-    srcs = [":resources_proto"],
-    deps = [":resources_ruby_proto"],
+    name = "sample_ruby_grpc",
+    srcs = [":sample_proto"],
+    deps = [":sample_ruby_proto"],
 )
 
 ##############################################################################
@@ -118,14 +141,14 @@ load(
 )
 
 csharp_proto_library(
-    name = "resources_csharp_proto",
-    deps = [":resources_proto"],
+    name = "sample_csharp_proto",
+    deps = [":sample_proto"],
 )
 
 csharp_grpc_library(
-    name = "resources_csharp_grpc",
-    srcs = [":resources_proto"],
-    deps = [":resources_csharp_proto"],
+    name = "sample_csharp_grpc",
+    srcs = [":sample_proto"],
+    deps = [":sample_csharp_proto"],
 )
 
 ##############################################################################

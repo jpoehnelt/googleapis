@@ -65,7 +65,6 @@ go_proto_library(
     protos = [":prediction_proto"],
     deps = [
         "//google/api:annotations_go_proto",
-        "//google/cloud/aiplatform/v1/schema/predict/instance:instance_go_proto",
     ],
 )
 
@@ -74,51 +73,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
     "py_gapic_assembly_pkg",
     "py_gapic_library",
-    "py_grpc_library",
-    "py_proto_library",
-
-)
-
-moved_proto_library(
-    name = "prediction_moved_proto",
-    srcs = [":prediction_proto"],
-    deps = [
-        "//google/api:annotations_proto",
-        "//google/cloud/aiplatform/v1/schema/predict/instance:instance_proto",
-        "@com_google_protobuf//:duration_proto",
-        "@com_google_protobuf//:struct_proto",
-        "@com_google_protobuf//:wrappers_proto",
-    ],
-)
-
-py_proto_library(
-    name = "prediction_py_proto",
-    deps = [":prediction_moved_proto"],
-)
-
-py_grpc_library(
-    name = "prediction_py_grpc",
-    srcs = [":prediction_moved_proto"],
-    deps = [":prediction_py_proto"],
 )
 
 py_gapic_library(
     name = "prediction_py_gapic",
-    opt_args = [
-        "python-gapic-namespace=google.cloud.aiplatform.v1.schema.predict", # Replace with the current version
-        "python-gapic-name=prediction",
-    ],
     srcs = [":prediction_proto"],
 )
 
+# Open Source Packages
 py_gapic_assembly_pkg(
-    name = "prediction-py",
+    name = "prediction-{{version}}-py",
     deps = [
         ":prediction_py_gapic",
-    ]
+    ],
 )
 
 ##############################################################################

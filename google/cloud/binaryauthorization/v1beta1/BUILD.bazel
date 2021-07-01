@@ -70,6 +70,7 @@ java_gapic_library(
     name = "binaryauthorization_java_gapic",
     srcs = [":binaryauthorization_proto_with_info"],
     grpc_service_config = "binaryauthorization_grpc_service_config.json",
+    service_yaml = "binaryauthorization_v1beta1.yaml",
     test_deps = [
         ":binaryauthorization_java_grpc",
     ],
@@ -95,6 +96,12 @@ java_gapic_assembly_gradle_pkg(
         ":binaryauthorization_java_proto",
         ":binaryauthorization_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-binaryauthorization-v1beta1-java",
+    actual = ":binaryauthorization-v1beta1-go",
+    deprecated = "Please use :binaryauthorization-v1beta1-java.",
 )
 
 ##############################################################################
@@ -146,6 +153,12 @@ go_gapic_assembly_pkg(
         ":binaryauthorization_go_gapic_srcjar-test.srcjar",
         ":binaryauthorization_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-binaryauthorization-v1beta1-go",
+    actual = ":binaryauthorization-v1beta1-go",
+    deprecated = "Please use :binaryauthorization-v1beta1-go.",
 )
 
 ##############################################################################
@@ -212,6 +225,12 @@ php_gapic_assembly_pkg(
         ":binaryauthorization_php_grpc",
         ":binaryauthorization_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-binaryauthorization-v1beta1-php",
+    actual = ":binaryauthorization-v1beta1-php",
+    deprecated = "Please use :binaryauthorization-v1beta1-php.",
 )
 
 ##############################################################################
@@ -294,6 +313,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-binaryauthorization-v1beta1-ruby",
+    actual = ":binaryauthorization-v1beta1-ruby",
+    deprecated = "Please use :binaryauthorization-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -335,6 +360,12 @@ csharp_gapic_assembly_pkg(
         ":binaryauthorization_csharp_grpc",
         ":binaryauthorization_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-binaryauthorization-v1beta1-csharp",
+    actual = ":binaryauthorization-v1beta1-csharp",
+    deprecated = "Please use :binaryauthorization-v1beta1-csharp.",
 )
 
 ##############################################################################

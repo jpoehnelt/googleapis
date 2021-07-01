@@ -9,11 +9,12 @@ package(default_visibility = ["//visibility:public"])
 load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
-    name = "clientinfo_proto",
+    name = "unity_proto",
     srcs = [
         "clientinfo.proto",
     ],
     deps = [
+        
     ],
 )
 
@@ -27,14 +28,14 @@ load(
 )
 
 java_proto_library(
-    name = "clientinfo_java_proto",
-    deps = [":clientinfo_proto"],
+    name = "unity_java_proto",
+    deps = [":unity_proto"],
 )
 
 java_grpc_library(
-    name = "clientinfo_java_grpc",
-    srcs = [":clientinfo_proto"],
-    deps = [":clientinfo_java_proto"],
+    name = "unity_java_grpc",
+    srcs = [":unity_proto"],
+    deps = [":unity_java_proto"],
 )
 
 ##############################################################################
@@ -46,11 +47,34 @@ load(
 )
 
 go_proto_library(
-    name = "clientinfo_go_proto",
+    name = "unity_go_proto",
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "google.golang.org/genproto/googleapis/maps/unity",
-    protos = [":clientinfo_proto"],
+    protos = [":unity_proto"],
     deps = [
+        
+    ],
+)
+
+##############################################################################
+# Python
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
+)
+
+py_gapic_library(
+    name = "unity_py_gapic",
+    srcs = [":unity_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "unity-{{version}}-py",
+    deps = [
+        ":unity_py_gapic",
     ],
 )
 
@@ -64,14 +88,14 @@ load(
 )
 
 php_proto_library(
-    name = "clientinfo_php_proto",
-    deps = [":clientinfo_proto"],
+    name = "unity_php_proto",
+    deps = [":unity_proto"],
 )
 
 php_grpc_library(
-    name = "clientinfo_php_grpc",
-    srcs = [":clientinfo_proto"],
-    deps = [":clientinfo_php_proto"],
+    name = "unity_php_grpc",
+    srcs = [":unity_proto"],
+    deps = [":unity_php_proto"],
 )
 
 ##############################################################################
@@ -83,6 +107,7 @@ load(
     "nodejs_gapic_library",
 )
 
+
 ##############################################################################
 # Ruby
 ##############################################################################
@@ -93,14 +118,14 @@ load(
 )
 
 ruby_proto_library(
-    name = "clientinfo_ruby_proto",
-    deps = [":clientinfo_proto"],
+    name = "unity_ruby_proto",
+    deps = [":unity_proto"],
 )
 
 ruby_grpc_library(
-    name = "clientinfo_ruby_grpc",
-    srcs = [":clientinfo_proto"],
-    deps = [":clientinfo_ruby_proto"],
+    name = "unity_ruby_grpc",
+    srcs = [":unity_proto"],
+    deps = [":unity_ruby_proto"],
 )
 
 ##############################################################################
@@ -113,14 +138,14 @@ load(
 )
 
 csharp_proto_library(
-    name = "clientinfo_csharp_proto",
-    deps = [":clientinfo_proto"],
+    name = "unity_csharp_proto",
+    deps = [":unity_proto"],
 )
 
 csharp_grpc_library(
-    name = "clientinfo_csharp_grpc",
-    srcs = [":clientinfo_proto"],
-    deps = [":clientinfo_csharp_proto"],
+    name = "unity_csharp_grpc",
+    srcs = [":unity_proto"],
+    deps = [":unity_csharp_proto"],
 )
 
 ##############################################################################

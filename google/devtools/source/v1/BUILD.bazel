@@ -6,7 +6,7 @@ package(default_visibility = ["//visibility:public"])
 ##############################################################################
 # Common
 ##############################################################################
-load("@com_google_googleapis_imports//:imports.bzl", "proto_library_with_info")
+load("@rules_proto//proto:defs.bzl", "proto_library")
 
 proto_library(
     name = "source_proto",
@@ -15,13 +15,6 @@ proto_library(
     ],
     deps = [
         "//google/api:annotations_proto",
-    ],
-)
-
-proto_library_with_info(
-    name = "source_proto_with_info",
-    deps = [
-      ":source_proto",
     ],
 )
 
@@ -68,23 +61,18 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "py_gapic_library",
     "py_gapic_assembly_pkg",
+    "py_gapic_library",
 )
 
 py_gapic_library(
     name = "source_py_gapic",
     srcs = [":source_proto"],
-    opt_args = [
-        "warehouse-package-name=google-cloud-source-context",
-        "python-gapic-namespace=google.cloud",
-        "python-gapic-name=source_context",
-    ],
 )
 
 # Open Source Packages
 py_gapic_assembly_pkg(
-    name = "google-cloud-source-v1-py",
+    name = "devtools-source-v1-py",
     deps = [
         ":source_py_gapic",
     ],

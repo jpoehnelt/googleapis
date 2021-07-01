@@ -17,7 +17,7 @@ proto_library(
     ],
     deps = [
         "//google/api:annotations_proto",
-        "//google/identity/accesscontextmanager/type:type_proto",
+        "//google/identity/accesscontextmanager/type:device_resources_proto",
         "//google/type:expr_proto",
         "@com_google_protobuf//:timestamp_proto",
     ],
@@ -28,7 +28,6 @@ proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "java_gapic_assembly_gradle_pkg",
     "java_grpc_library",
     "java_proto_library",
 )
@@ -42,16 +41,6 @@ java_grpc_library(
     name = "accesscontextmanager_java_grpc",
     srcs = [":accesscontextmanager_proto"],
     deps = [":accesscontextmanager_java_proto"],
-)
-
-# Open Source Packages
-java_gapic_assembly_gradle_pkg(
-    name = "google-cloud-accesscontextmanager-v1-java",
-    deps = [
-        ":accesscontextmanager_java_grpc",
-        ":accesscontextmanager_java_proto",
-        ":accesscontextmanager_proto",
-    ],
 )
 
 ##############################################################################
@@ -69,7 +58,7 @@ go_proto_library(
     protos = [":accesscontextmanager_proto"],
     deps = [
         "//google/api:annotations_go_proto",
-        "//google/identity/accesscontextmanager/type:type_go_proto",
+        "//google/identity/accesscontextmanager/type:device_resources_go_proto",
         "//google/type:expr_go_proto",
     ],
 )
@@ -79,31 +68,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
-    "py_grpc_library",
-    "py_proto_library",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
 )
 
-moved_proto_library(
-    name = "accesscontextmanager_moved_proto",
+py_gapic_library(
+    name = "accesscontextmanager_py_gapic",
     srcs = [":accesscontextmanager_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "identity-accesscontextmanager-v1-py",
     deps = [
-        "//google/api:annotations_proto",
-        "//google/identity/accesscontextmanager/type:type_proto",
-        "//google/type:expr_proto",
-        "@com_google_protobuf//:timestamp_proto",
+        ":accesscontextmanager_py_gapic",
     ],
-)
-
-py_proto_library(
-    name = "accesscontextmanager_py_proto",
-    deps = [":accesscontextmanager_moved_proto"],
-)
-
-py_grpc_library(
-    name = "accesscontextmanager_py_grpc",
-    srcs = [":accesscontextmanager_moved_proto"],
-    deps = [":accesscontextmanager_py_proto"],
 )
 
 ##############################################################################
@@ -134,6 +113,7 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
 
 ##############################################################################
 # Ruby

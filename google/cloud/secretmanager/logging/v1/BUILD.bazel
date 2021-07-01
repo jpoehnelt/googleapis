@@ -14,6 +14,7 @@ proto_library(
         "secret_event.proto",
     ],
     deps = [
+        
     ],
 )
 
@@ -51,6 +52,7 @@ go_proto_library(
     importpath = "google.golang.org/genproto/googleapis/cloud/secretmanager/logging/v1",
     protos = [":logging_proto"],
     deps = [
+        
     ],
 )
 
@@ -59,27 +61,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
-    "py_grpc_library",
-    "py_proto_library",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
 )
 
-moved_proto_library(
-    name = "logging_moved_proto",
+py_gapic_library(
+    name = "logging_py_gapic",
     srcs = [":logging_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "secretmanager-logging-v1-py",
     deps = [
+        ":logging_py_gapic",
     ],
-)
-
-py_proto_library(
-    name = "logging_py_proto",
-    deps = [":logging_moved_proto"],
-)
-
-py_grpc_library(
-    name = "logging_py_grpc",
-    srcs = [":logging_moved_proto"],
-    deps = [":logging_py_proto"],
 )
 
 ##############################################################################
@@ -110,6 +106,7 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
 
 ##############################################################################
 # Ruby

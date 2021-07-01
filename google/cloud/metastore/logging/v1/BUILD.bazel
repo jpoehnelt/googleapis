@@ -13,7 +13,9 @@ proto_library(
     srcs = [
         "log_streams.proto",
     ],
-    deps = [],
+    deps = [
+        
+    ],
 )
 
 ##############################################################################
@@ -49,7 +51,9 @@ go_proto_library(
     compilers = ["@io_bazel_rules_go//proto:go_grpc"],
     importpath = "google.golang.org/genproto/googleapis/cloud/metastore/logging/v1",
     protos = [":logging_proto"],
-    deps = [],
+    deps = [
+        
+    ],
 )
 
 ##############################################################################
@@ -57,26 +61,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
-    "py_grpc_library",
-    "py_proto_library",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
 )
 
-moved_proto_library(
-    name = "logging_moved_proto",
+py_gapic_library(
+    name = "logging_py_gapic",
     srcs = [":logging_proto"],
-    deps = [],
 )
 
-py_proto_library(
-    name = "logging_py_proto",
-    deps = [":logging_moved_proto"],
-)
-
-py_grpc_library(
-    name = "logging_py_grpc",
-    srcs = [":logging_moved_proto"],
-    deps = [":logging_py_proto"],
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "metastore-logging-v1-py",
+    deps = [
+        ":logging_py_gapic",
+    ],
 )
 
 ##############################################################################
@@ -148,3 +147,8 @@ csharp_grpc_library(
     srcs = [":logging_proto"],
     deps = [":logging_csharp_proto"],
 )
+
+##############################################################################
+# C++
+##############################################################################
+# Put your C++ code here

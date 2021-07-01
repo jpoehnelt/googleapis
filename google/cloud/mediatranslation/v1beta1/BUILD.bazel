@@ -65,6 +65,7 @@ java_gapic_library(
     name = "mediatranslation_java_gapic",
     srcs = [":mediatranslation_proto_with_info"],
     grpc_service_config = "mediatranslation_grpc_service_config.json",
+    service_yaml = "mediatranslation_v1beta1.yaml",
     test_deps = [
         ":mediatranslation_java_grpc",
     ],
@@ -90,6 +91,12 @@ java_gapic_assembly_gradle_pkg(
         ":mediatranslation_java_proto",
         ":mediatranslation_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-mediatranslation-v1beta1-java",
+    actual = ":mediatranslation-v1beta1-go",
+    deprecated = "Please use :mediatranslation-v1beta1-java.",
 )
 
 ##############################################################################
@@ -142,6 +149,12 @@ go_gapic_assembly_pkg(
         ":mediatranslation_go_gapic_srcjar-test.srcjar",
         ":mediatranslation_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-mediatranslation-v1beta1-go",
+    actual = ":mediatranslation-v1beta1-go",
+    deprecated = "Please use :mediatranslation-v1beta1-go.",
 )
 
 ##############################################################################
@@ -208,6 +221,12 @@ php_gapic_assembly_pkg(
         ":mediatranslation_php_grpc",
         ":mediatranslation_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-mediatranslation-v1beta1-php",
+    actual = ":mediatranslation-v1beta1-php",
+    deprecated = "Please use :mediatranslation-v1beta1-php.",
 )
 
 ##############################################################################
@@ -289,6 +308,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-mediatranslation-v1beta1-ruby",
+    actual = ":mediatranslation-v1beta1-ruby",
+    deprecated = "Please use :mediatranslation-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -330,6 +355,12 @@ csharp_gapic_assembly_pkg(
         ":mediatranslation_csharp_grpc",
         ":mediatranslation_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-mediatranslation-v1beta1-csharp",
+    actual = ":mediatranslation-v1beta1-csharp",
+    deprecated = "Please use :mediatranslation-v1beta1-csharp.",
 )
 
 ##############################################################################

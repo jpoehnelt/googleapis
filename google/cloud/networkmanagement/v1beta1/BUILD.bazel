@@ -72,6 +72,7 @@ java_gapic_library(
     name = "networkmanagement_java_gapic",
     srcs = [":networkmanagement_proto_with_info"],
     grpc_service_config = "networkmanagement_grpc_service_config.json",
+    service_yaml = "networkmanagement_v1beta1.yaml",
     test_deps = [
         ":networkmanagement_java_grpc",
     ],
@@ -97,6 +98,12 @@ java_gapic_assembly_gradle_pkg(
         ":networkmanagement_java_proto",
         ":networkmanagement_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-networkmanagement-v1beta1-java",
+    actual = ":networkmanagement-v1beta1-go",
+    deprecated = "Please use :networkmanagement-v1beta1-java.",
 )
 
 ##############################################################################
@@ -153,6 +160,12 @@ go_gapic_assembly_pkg(
         ":networkmanagement_go_gapic_srcjar-test.srcjar",
         ":networkmanagement_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-networkmanagement-v1beta1-go",
+    actual = ":networkmanagement-v1beta1-go",
+    deprecated = "Please use :networkmanagement-v1beta1-go.",
 )
 
 ##############################################################################
@@ -219,6 +232,12 @@ php_gapic_assembly_pkg(
         ":networkmanagement_php_grpc",
         ":networkmanagement_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-networkmanagement-v1beta1-php",
+    actual = ":networkmanagement-v1beta1-php",
+    deprecated = "Please use :networkmanagement-v1beta1-php.",
 )
 
 ##############################################################################
@@ -292,6 +311,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-networkmanagement-v1beta1-ruby",
+    actual = ":networkmanagement-v1beta1-ruby",
+    deprecated = "Please use :networkmanagement-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -333,6 +358,12 @@ csharp_gapic_assembly_pkg(
         ":networkmanagement_csharp_grpc",
         ":networkmanagement_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-networkmanagement-v1beta1-csharp",
+    actual = ":networkmanagement-v1beta1-csharp",
+    deprecated = "Please use :networkmanagement-v1beta1-csharp.",
 )
 
 ##############################################################################

@@ -61,12 +61,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
     "py_gapic_library",
 )
 
 py_gapic_library(
     name = "cloudauditlogging_py_gapic",
     srcs = [":cloudauditlogging_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "gkehub-cloudauditlogging-v1alpha-py",
+    deps = [
+        ":cloudauditlogging_py_gapic",
+    ],
 )
 
 ##############################################################################

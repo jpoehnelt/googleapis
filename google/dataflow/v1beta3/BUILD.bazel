@@ -76,6 +76,7 @@ java_gapic_library(
     name = "dataflow_java_gapic",
     srcs = [":dataflow_proto_with_info"],
     grpc_service_config = "dataflow_grpc_service_config.json",
+    service_yaml = "dataflow_v1beta3.yaml",
     test_deps = [
         ":dataflow_java_grpc",
     ],
@@ -108,6 +109,12 @@ java_gapic_assembly_gradle_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-dataflow-v1beta3-java",
+    actual = ":dataflow-v1beta3-go",
+    deprecated = "Please use :dataflow-v1beta3-java.",
+)
+
 ##############################################################################
 # Go
 ##############################################################################
@@ -135,8 +142,8 @@ go_gapic_library(
     srcs = [":dataflow_proto_with_info"],
     grpc_service_config = "dataflow_grpc_service_config.json",
     importpath = "cloud.google.com/go/dataflow/apiv1beta3;dataflow",
-    service_yaml = "dataflow_v1beta3.yaml",
     metadata = True,
+    service_yaml = "dataflow_v1beta3.yaml",
     deps = [
         ":dataflow_go_proto",
         "@io_bazel_rules_go//proto/wkt:duration_go_proto",
@@ -155,10 +162,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-dataflow-v1beta3-go",
     deps = [
         ":dataflow_go_gapic",
-        ":dataflow_go_gapic_srcjar-test.srcjar",
         ":dataflow_go_gapic_srcjar-metadata.srcjar",
+        ":dataflow_go_gapic_srcjar-test.srcjar",
         ":dataflow_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-dataflow-v1beta3-go",
+    actual = ":dataflow-v1beta3-go",
+    deprecated = "Please use :dataflow-v1beta3-go.",
 )
 
 ##############################################################################
@@ -175,9 +188,9 @@ py_gapic_library(
     srcs = [":dataflow_proto"],
     grpc_service_config = "dataflow_grpc_service_config.json",
     opt_args = [
-        "warehouse-package-name=google-cloud-dataflow-client",
-        "python-gapic-namespace=google.cloud",
         "python-gapic-name=dataflow",
+        "python-gapic-namespace=google.cloud",
+        "warehouse-package-name=google-cloud-dataflow-client",
     ],
 )
 
@@ -232,6 +245,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-dataflow-v1beta3-php",
+    actual = ":dataflow-v1beta3-php",
+    deprecated = "Please use :dataflow-v1beta3-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -265,8 +284,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -286,11 +305,11 @@ ruby_cloud_gapic_library(
     name = "dataflow_ruby_gapic",
     srcs = [":dataflow_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-dataflow-v1beta3",
-        "ruby-cloud-env-prefix=DATAFLOW",
-        "ruby-cloud-product-url=https://cloud.google.com/dataflow",
         "ruby-cloud-api-id=dataflow.googleapis.com",
         "ruby-cloud-api-shortname=dataflow",
+        "ruby-cloud-env-prefix=DATAFLOW",
+        "ruby-cloud-gem-name=google-cloud-dataflow-v1beta3",
+        "ruby-cloud-product-url=https://cloud.google.com/dataflow",
         "ruby-cloud-service-override=JobsV1Beta3=Jobs;MessagesV1Beta3=Messages;MetricsV1Beta3=Metrics;SnapshotsV1Beta3=Snapshots",
     ],
     grpc_service_config = "dataflow_grpc_service_config.json",
@@ -310,6 +329,12 @@ ruby_gapic_assembly_pkg(
         ":dataflow_ruby_grpc",
         ":dataflow_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-dataflow-v1beta3-ruby",
+    actual = ":dataflow-v1beta3-ruby",
+    deprecated = "Please use :dataflow-v1beta3-ruby.",
 )
 
 ##############################################################################
@@ -353,6 +378,12 @@ csharp_gapic_assembly_pkg(
         ":dataflow_csharp_grpc",
         ":dataflow_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-dataflow-v1beta3-csharp",
+    actual = ":dataflow-v1beta3-csharp",
+    deprecated = "Please use :dataflow-v1beta3-csharp.",
 )
 
 ##############################################################################

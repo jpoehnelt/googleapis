@@ -69,6 +69,7 @@ java_gapic_library(
     name = "lifesciences_java_gapic",
     srcs = [":lifesciences_proto_with_info"],
     grpc_service_config = "lifesciences_grpc_service_config.json",
+    service_yaml = "lifesciences_v2beta.yaml",
     test_deps = [
         ":lifesciences_java_grpc",
     ],
@@ -94,6 +95,12 @@ java_gapic_assembly_gradle_pkg(
         ":lifesciences_java_proto",
         ":lifesciences_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-lifesciences-v2beta-java",
+    actual = ":lifesciences-v2beta-go",
+    deprecated = "Please use :lifesciences-v2beta-java.",
 )
 
 ##############################################################################
@@ -124,13 +131,13 @@ go_gapic_library(
     srcs = [":lifesciences_proto_with_info"],
     grpc_service_config = "lifesciences_grpc_service_config.json",
     importpath = "cloud.google.com/go/lifesciences/apiv2beta;lifesciences",
-    service_yaml = "lifesciences_v2beta.yaml",
     metadata = True,
+    service_yaml = "lifesciences_v2beta.yaml",
     deps = [
         ":lifesciences_go_proto",
         "//google/longrunning:longrunning_go_proto",
-        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@com_google_cloud_go//longrunning:go_default_library",
+        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@io_bazel_rules_go//proto/wkt:duration_go_proto",
     ],
 )
@@ -147,10 +154,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-lifesciences-v2beta-go",
     deps = [
         ":lifesciences_go_gapic",
-        ":lifesciences_go_gapic_srcjar-test.srcjar",
         ":lifesciences_go_gapic_srcjar-metadata.srcjar",
+        ":lifesciences_go_gapic_srcjar-test.srcjar",
         ":lifesciences_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-lifesciences-v2beta-go",
+    actual = ":lifesciences-v2beta-go",
+    deprecated = "Please use :lifesciences-v2beta-go.",
 )
 
 ##############################################################################
@@ -166,7 +179,7 @@ py_gapic_library(
     name = "lifesciences_py_gapic",
     srcs = [":lifesciences_proto"],
     grpc_service_config = "lifesciences_grpc_service_config.json",
-    opt_args = ["warehouse-package-name=google-cloud-life-sciences"]
+    opt_args = ["warehouse-package-name=google-cloud-life-sciences"],
 )
 
 # Open Source Packages
@@ -220,6 +233,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-lifesciences-v2beta-php",
+    actual = ":lifesciences-v2beta-php",
+    deprecated = "Please use :lifesciences-v2beta-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -253,8 +272,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -274,11 +293,11 @@ ruby_cloud_gapic_library(
     name = "lifesciences_ruby_gapic",
     srcs = [":lifesciences_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-life_sciences-v2beta",
-        "ruby-cloud-env-prefix=LIFE_SCIENCES",
-        "ruby-cloud-product-url=https://cloud.google.com/life-sciences/",
         "ruby-cloud-api-id=lifesciences.googleapis.com",
         "ruby-cloud-api-shortname=lifesciences",
+        "ruby-cloud-env-prefix=LIFE_SCIENCES",
+        "ruby-cloud-gem-name=google-cloud-life_sciences-v2beta",
+        "ruby-cloud-product-url=https://cloud.google.com/life-sciences/",
         "ruby-cloud-service-override=WorkflowsServiceV2Beta=WorkflowsService",
     ],
     grpc_service_config = "lifesciences_grpc_service_config.json",
@@ -298,6 +317,12 @@ ruby_gapic_assembly_pkg(
         ":lifesciences_ruby_grpc",
         ":lifesciences_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-lifesciences-v2beta-ruby",
+    actual = ":lifesciences-v2beta-ruby",
+    deprecated = "Please use :lifesciences-v2beta-ruby.",
 )
 
 ##############################################################################
@@ -341,6 +366,12 @@ csharp_gapic_assembly_pkg(
         ":lifesciences_csharp_grpc",
         ":lifesciences_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-lifesciences-v2beta-csharp",
+    actual = ":lifesciences-v2beta-csharp",
+    deprecated = "Please use :lifesciences-v2beta-csharp.",
 )
 
 ##############################################################################

@@ -76,6 +76,7 @@ java_gapic_library(
     name = "osconfig_java_gapic",
     srcs = [":osconfig_proto_with_info"],
     grpc_service_config = "osconfig_grpc_service_config.json",
+    service_yaml = "osconfig_v1.yaml",
     test_deps = [
         ":osconfig_java_grpc",
     ],
@@ -101,6 +102,12 @@ java_gapic_assembly_gradle_pkg(
         ":osconfig_java_proto",
         ":osconfig_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-osconfig-v1-java",
+    actual = ":osconfig-v1-go",
+    deprecated = "Please use :osconfig-v1-java.",
 )
 
 ##############################################################################
@@ -156,6 +163,12 @@ go_gapic_assembly_pkg(
         ":osconfig_go_gapic_srcjar-test.srcjar",
         ":osconfig_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-osconfig-v1-go",
+    actual = ":osconfig-v1-go",
+    deprecated = "Please use :osconfig-v1-go.",
 )
 
 ##############################################################################
@@ -222,6 +235,12 @@ php_gapic_assembly_pkg(
         ":osconfig_php_grpc",
         ":osconfig_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-osconfig-v1-php",
+    actual = ":osconfig-v1-php",
+    deprecated = "Please use :osconfig-v1-php.",
 )
 
 ##############################################################################
@@ -304,6 +323,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-osconfig-v1-ruby",
+    actual = ":osconfig-v1-ruby",
+    deprecated = "Please use :osconfig-v1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -345,6 +370,12 @@ csharp_gapic_assembly_pkg(
         ":osconfig_csharp_grpc",
         ":osconfig_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-osconfig-v1-csharp",
+    actual = ":osconfig-v1-csharp",
+    deprecated = "Please use :osconfig-v1-csharp.",
 )
 
 ##############################################################################

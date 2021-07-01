@@ -27,6 +27,7 @@ proto_library(
     deps = [
         "//google/api:annotations_proto",
         "//google/api:client_proto",
+        "//google/apps/market/v2:resources_proto",
     ],
 )
 
@@ -65,6 +66,7 @@ java_gapic_library(
     name = "marketplace_java_gapic",
     srcs = [":marketplace_proto_with_info"],
     grpc_service_config = "service_grpc_service_config.json",
+    service_yaml = "appsmarket_v2.yaml",
     test_deps = [
         ":marketplace_java_grpc",
     ],
@@ -94,6 +96,12 @@ java_gapic_assembly_gradle_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-hosted-marketplace-v2-java",
+    actual = ":hosted-marketplace-v2-go",
+    deprecated = "Please use :hosted-marketplace-v2-java.",
+)
+
 ##############################################################################
 # Go
 ##############################################################################
@@ -112,6 +120,7 @@ go_proto_library(
     protos = [":marketplace_proto"],
     deps = [
         "//google/api:annotations_go_proto",
+        "//google/apps/market/v2:resources_go_proto",
     ],
 )
 
@@ -143,6 +152,12 @@ go_gapic_assembly_pkg(
         ":marketplace_go_gapic_srcjar-test.srcjar",
         ":marketplace_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-hosted-marketplace-v2-go",
+    actual = ":hosted-marketplace-v2-go",
+    deprecated = "Please use :hosted-marketplace-v2-go.",
 )
 
 ##############################################################################
@@ -194,6 +209,7 @@ php_gapic_library(
     name = "marketplace_php_gapic",
     srcs = [":marketplace_proto_with_info"],
     grpc_service_config = "service_grpc_service_config.json",
+    service_yaml = "appsmarket_v2.yaml",
     deps = [
         ":marketplace_php_grpc",
         ":marketplace_php_proto",
@@ -208,6 +224,12 @@ php_gapic_assembly_pkg(
         ":marketplace_php_grpc",
         ":marketplace_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-hosted-marketplace-v2-php",
+    actual = ":hosted-marketplace-v2-php",
+    deprecated = "Please use :hosted-marketplace-v2-php.",
 )
 
 ##############################################################################
@@ -263,9 +285,7 @@ ruby_grpc_library(
 ruby_cloud_gapic_library(
     name = "marketplace_ruby_gapic",
     srcs = [":marketplace_proto_with_info"],
-    extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-hosted-marketplace-v2",
-    ],
+    extra_protoc_parameters = ["ruby-cloud-gem-name=google-cloud-hosted-marketplace-v2"],
     grpc_service_config = "service_grpc_service_config.json",
     deps = [
         ":marketplace_ruby_grpc",
@@ -281,6 +301,12 @@ ruby_gapic_assembly_pkg(
         ":marketplace_ruby_grpc",
         ":marketplace_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-hosted-marketplace-v2-ruby",
+    actual = ":hosted-marketplace-v2-ruby",
+    deprecated = "Please use :hosted-marketplace-v2-ruby.",
 )
 
 ##############################################################################
@@ -324,6 +350,12 @@ csharp_gapic_assembly_pkg(
         ":marketplace_csharp_grpc",
         ":marketplace_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-hosted-marketplace-v2-csharp",
+    actual = ":hosted-marketplace-v2-csharp",
+    deprecated = "Please use :hosted-marketplace-v2-csharp.",
 )
 
 ##############################################################################

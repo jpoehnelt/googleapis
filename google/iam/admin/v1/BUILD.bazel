@@ -74,9 +74,8 @@ java_grpc_library(
 java_gapic_library(
     name = "admin_java_gapic",
     srcs = [":admin_proto_with_info"],
-    # This was manually replaced - build_gen shouldn't have removed it.
-    gapic_yaml = "iam_gapic.yaml",
     grpc_service_config = "iam_grpc_service_config.json",
+    service_yaml = "iam.yaml",
     test_deps = [
         ":admin_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -89,10 +88,7 @@ java_gapic_library(
 
 java_gapic_test(
     name = "admin_java_gapic_test_suite",
-    # This was manually named IAMClientTest - build_gen attempts to rename it to
-    # IamClientTest.
     test_classes = [
-        # Java package override from gapic.yaml.
         "com.google.cloud.iam.admin.v1.IAMClientTest",
     ],
     runtime_deps = [":admin_java_gapic_test"],
@@ -107,6 +103,12 @@ java_gapic_assembly_gradle_pkg(
         ":admin_java_proto",
         ":admin_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-iam-admin-v1-java",
+    actual = ":iam-admin-v1-go",
+    deprecated = "Please use :iam-admin-v1-java.",
 )
 
 ##############################################################################
@@ -163,6 +165,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-iam-admin-v1-go",
+    actual = ":iam-admin-v1-go",
+    deprecated = "Please use :iam-admin-v1-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -212,6 +220,7 @@ php_gapic_library(
     name = "admin_php_gapic",
     srcs = [":admin_proto_with_info"],
     grpc_service_config = "iam_grpc_service_config.json",
+    service_yaml = "iam.yaml",
     deps = [
         ":admin_php_grpc",
         ":admin_php_proto",
@@ -226,6 +235,12 @@ php_gapic_assembly_pkg(
         ":admin_php_grpc",
         ":admin_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-iam-admin-v1-php",
+    actual = ":iam-admin-v1-php",
+    deprecated = "Please use :iam-admin-v1-php.",
 )
 
 ##############################################################################
@@ -299,6 +314,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-iam-admin-v1-ruby",
+    actual = ":iam-admin-v1-ruby",
+    deprecated = "Please use :iam-admin-v1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -342,23 +363,13 @@ csharp_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-iam-admin-v1-csharp",
+    actual = ":iam-admin-v1-csharp",
+    deprecated = "Please use :iam-admin-v1-csharp.",
+)
+
 ##############################################################################
 # C++
 ##############################################################################
-load(
-    "@com_google_googleapis_imports//:imports.bzl",
-    "cc_grpc_library",
-    "cc_proto_library",
-)
-
-cc_proto_library(
-    name = "admin_cc_proto",
-    deps = [":admin_proto"],
-)
-
-cc_grpc_library(
-    name = "admin_cc_grpc",
-    srcs = [":admin_proto"],
-    grpc_only = True,
-    deps = [":admin_cc_proto"],
-)
+# Put your C++ rules here

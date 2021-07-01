@@ -21,6 +21,86 @@ proto_library(
 )
 
 ##############################################################################
+# Java
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "java_grpc_library",
+    "java_proto_library",
+)
+
+java_proto_library(
+    name = "conversation_java_proto",
+    deps = [":conversation_proto"],
+)
+
+java_grpc_library(
+    name = "conversation_java_grpc",
+    srcs = [":conversation_proto"],
+    deps = [":conversation_java_proto"],
+)
+
+##############################################################################
+# Go
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "go_proto_library",
+)
+
+go_proto_library(
+    name = "conversation_go_proto",
+    compilers = ["@io_bazel_rules_go//proto:go_grpc"],
+    importpath = "google.golang.org/genproto/googleapis/actions/sdk/v2/conversation",
+    protos = [":conversation_proto"],
+    deps = [
+        "//google/actions/sdk/v2/conversation/prompt:prompt_go_proto",
+    ],
+)
+
+##############################################################################
+# Python
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
+)
+
+py_gapic_library(
+    name = "conversation_py_gapic",
+    srcs = [":conversation_proto"],
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "conversation-{{version}}-py",
+    deps = [
+        ":conversation_py_gapic",
+    ],
+)
+
+##############################################################################
+# PHP
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "php_grpc_library",
+    "php_proto_library",
+)
+
+php_proto_library(
+    name = "conversation_php_proto",
+    deps = [":conversation_proto"],
+)
+
+php_grpc_library(
+    name = "conversation_php_grpc",
+    srcs = [":conversation_proto"],
+    deps = [":conversation_php_proto"],
+)
+
+##############################################################################
 # Node.js
 ##############################################################################
 load(
@@ -28,3 +108,49 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
+
+##############################################################################
+# Ruby
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "ruby_grpc_library",
+    "ruby_proto_library",
+)
+
+ruby_proto_library(
+    name = "conversation_ruby_proto",
+    deps = [":conversation_proto"],
+)
+
+ruby_grpc_library(
+    name = "conversation_ruby_grpc",
+    srcs = [":conversation_proto"],
+    deps = [":conversation_ruby_proto"],
+)
+
+##############################################################################
+# C#
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "csharp_grpc_library",
+    "csharp_proto_library",
+)
+
+csharp_proto_library(
+    name = "conversation_csharp_proto",
+    deps = [":conversation_proto"],
+)
+
+csharp_grpc_library(
+    name = "conversation_csharp_grpc",
+    srcs = [":conversation_proto"],
+    deps = [":conversation_csharp_proto"],
+)
+
+##############################################################################
+# C++
+##############################################################################
+# Put your C++ code here

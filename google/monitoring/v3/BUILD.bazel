@@ -94,14 +94,13 @@ java_grpc_library(
 java_gapic_library(
     name = "monitoring_java_gapic",
     srcs = [":monitoring_proto_with_info"],
-    gapic_yaml = "monitoring_gapic.yaml",
     grpc_service_config = "monitoring_grpc_service_config.json",
+    service_yaml = "monitoring.yaml",
     test_deps = [
         ":monitoring_java_grpc",
     ],
     deps = [
         ":monitoring_java_proto",
-        "//google/api:api_java_proto",
     ],
 )
 
@@ -128,6 +127,12 @@ java_gapic_assembly_gradle_pkg(
         ":monitoring_java_proto",
         ":monitoring_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-monitoring-v3-java",
+    actual = ":monitoring-v3-go",
+    deprecated = "Please use :monitoring-v3-java.",
 )
 
 ##############################################################################
@@ -167,8 +172,6 @@ go_gapic_library(
     service_yaml = "monitoring.yaml",
     deps = [
         ":monitoring_go_proto",
-        "//google/api:metric_go_proto",
-        "//google/api:monitoredres_go_proto",
         "@io_bazel_rules_go//proto/wkt:duration_go_proto",
     ],
 )
@@ -189,6 +192,12 @@ go_gapic_assembly_pkg(
         ":monitoring_go_gapic_srcjar-test.srcjar",
         ":monitoring_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-monitoring-v3-go",
+    actual = ":monitoring-v3-go",
+    deprecated = "Please use :monitoring-v3-go.",
 )
 
 ##############################################################################
@@ -241,6 +250,7 @@ php_gapic_library(
     name = "monitoring_php_gapic",
     srcs = [":monitoring_proto_with_info"],
     grpc_service_config = "monitoring_grpc_service_config.json",
+    service_yaml = "monitoring.yaml",
     deps = [
         ":monitoring_php_grpc",
         ":monitoring_php_proto",
@@ -255,6 +265,12 @@ php_gapic_assembly_pkg(
         ":monitoring_php_grpc",
         ":monitoring_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-monitoring-v3-php",
+    actual = ":monitoring-v3-php",
+    deprecated = "Please use :monitoring-v3-php.",
 )
 
 ##############################################################################
@@ -337,6 +353,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-monitoring-v3-ruby",
+    actual = ":monitoring-v3-ruby",
+    deprecated = "Please use :monitoring-v3-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -380,24 +402,13 @@ csharp_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-monitoring-v3-csharp",
+    actual = ":monitoring-v3-csharp",
+    deprecated = "Please use :monitoring-v3-csharp.",
+)
+
 ##############################################################################
 # C++
 ##############################################################################
-load(
-    "@com_google_googleapis_imports//:imports.bzl",
-    "cc_grpc_library",
-    "cc_proto_library",
-)
-
-cc_proto_library(
-    name = "monitoring_cc_proto",
-    deps = [":monitoring_proto"],
-)
-
-cc_grpc_library(
-    name = "monitoring_cc_grpc",
-    srcs = [":monitoring_proto"],
-    generate_mocks = True,
-    grpc_only = True,
-    deps = [":monitoring_cc_proto"],
-)
+# Put your C++ rules here

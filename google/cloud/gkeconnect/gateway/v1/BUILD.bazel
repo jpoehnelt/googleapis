@@ -30,11 +30,22 @@ proto_library(
     ],
 )
 
+proto_library_with_info(
+    name = "gateway_proto_with_info",
+    deps = [
+        ":gateway_proto",
+        "//google/cloud:common_resources_proto",
+    ],
+)
+
 ##############################################################################
 # Java
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "java_gapic_assembly_gradle_pkg",
+    "java_gapic_library",
+    "java_gapic_test",
     "java_grpc_library",
     "java_proto_library",
 )
@@ -50,12 +61,54 @@ java_grpc_library(
     deps = [":gateway_java_proto"],
 )
 
+java_gapic_library(
+    name = "gateway_java_gapic",
+    srcs = [":gateway_proto_with_info"],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    service_yaml = "connectgateway_v1.yaml",
+    test_deps = [
+        ":gateway_java_grpc",
+    ],
+    deps = [
+        ":gateway_java_proto",
+        "//google/api:api_java_proto",
+    ],
+)
+
+java_gapic_test(
+    name = "gateway_java_gapic_test_suite",
+    test_classes = [
+        "com.google.cloud.gkeconnect.gateway.v1.GatewayServiceClientTest",
+    ],
+    runtime_deps = [":gateway_java_gapic_test"],
+)
+
+# Open Source Packages
+java_gapic_assembly_gradle_pkg(
+    name = "gkeconnect-gateway-v1-java",
+    deps = [
+        ":gateway_java_gapic",
+        ":gateway_java_grpc",
+        ":gateway_java_proto",
+        ":gateway_proto",
+    ],
+)
+
+alias(
+    name = "google-cloud-gkeconnect-gateway-v1-java",
+    actual = ":gkeconnect-gateway-v1-go",
+    deprecated = "Please use :gkeconnect-gateway-v1-java."
+)
+
 ##############################################################################
 # Go
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "go_gapic_assembly_pkg",
+    "go_gapic_library",
     "go_proto_library",
+    "go_test",
 )
 
 go_proto_library(
@@ -69,35 +122,64 @@ go_proto_library(
     ],
 )
 
+go_gapic_library(
+    name = "gateway_go_gapic",
+    srcs = [":gateway_proto_with_info"],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    importpath = "cloud.google.com/go/gkeconnect/gateway/apiv1;gateway",
+    service_yaml = "connectgateway_v1.yaml",
+    metadata = True,
+    deps = [
+        ":gateway_go_proto",
+        "//google/api:httpbody_go_proto",
+    ],
+)
+
+go_test(
+    name = "gateway_go_gapic_test",
+    srcs = [":gateway_go_gapic_srcjar_test"],
+    embed = [":gateway_go_gapic"],
+    importpath = "cloud.google.com/go/gkeconnect/gateway/apiv1",
+)
+
+# Open Source Packages
+go_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-go",
+    deps = [
+        ":gateway_go_gapic",
+        ":gateway_go_gapic_srcjar-test.srcjar",
+        ":gateway_go_gapic_srcjar-metadata.srcjar",
+        ":gateway_go_proto",
+    ],
+)
+
+alias(
+    name = "gapi-cloud-gkeconnect-gateway-v1-go",
+    actual = ":gkeconnect-gateway-v1-go",
+    deprecated = "Please use :gkeconnect-gateway-v1-go."
+)
+
 ##############################################################################
 # Python
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
-    "py_grpc_library",
-    "py_proto_library",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
 )
 
-moved_proto_library(
-    name = "gateway_moved_proto",
+py_gapic_library(
+    name = "gateway_py_gapic",
     srcs = [":gateway_proto"],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+)
+
+# Open Source Packages
+py_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-py",
     deps = [
-        "//google/api:annotations_proto",
-        "//google/api:client_proto",
-        "//google/api:httpbody_proto",
+        ":gateway_py_gapic",
     ],
-)
-
-py_proto_library(
-    name = "gateway_py_proto",
-    deps = [":gateway_moved_proto"],
-)
-
-py_grpc_library(
-    name = "gateway_py_grpc",
-    srcs = [":gateway_moved_proto"],
-    deps = [":gateway_py_proto"],
 )
 
 ##############################################################################
@@ -105,6 +187,8 @@ py_grpc_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "php_gapic_assembly_pkg",
+    "php_gapic_library",
     "php_grpc_library",
     "php_proto_library",
 )
@@ -120,6 +204,33 @@ php_grpc_library(
     deps = [":gateway_php_proto"],
 )
 
+php_gapic_library(
+    name = "gateway_php_gapic",
+    srcs = [":gateway_proto_with_info"],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    service_yaml = "connectgateway_v1.yaml",
+    deps = [
+        ":gateway_php_grpc",
+        ":gateway_php_proto",
+    ],
+)
+
+# Open Source Packages
+php_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-php",
+    deps = [
+        ":gateway_php_gapic",
+        ":gateway_php_grpc",
+        ":gateway_php_proto",
+    ],
+)
+
+alias(
+    name = "google-cloud-gkeconnect-gateway-v1-php",
+    actual = ":gkeconnect-gateway-v1-php",
+    deprecated = "Please use :gkeconnect-gateway-v1-php."
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -129,11 +240,32 @@ load(
     "nodejs_gapic_library",
 )
 
+nodejs_gapic_library(
+    name = "gateway_nodejs_gapic",
+    package_name = "@google-cloud/gateway",
+    src = ":gateway_proto_with_info",
+    extra_protoc_parameters = ["metadata"],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    package = "google.cloud.gkeconnect.gateway.v1",
+    service_yaml = "connectgateway_v1.yaml",
+    deps = [],
+)
+
+nodejs_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-nodejs",
+    deps = [
+        ":gateway_nodejs_gapic",
+        ":gateway_proto",
+    ],
+)
+
 ##############################################################################
 # Ruby
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "ruby_gapic_assembly_pkg",
+    "ruby_cloud_gapic_library",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -149,11 +281,42 @@ ruby_grpc_library(
     deps = [":gateway_ruby_proto"],
 )
 
+ruby_cloud_gapic_library(
+    name = "gateway_ruby_gapic",
+    srcs = [":gateway_proto_with_info"],
+    extra_protoc_parameters = [
+        "ruby-cloud-gem-name=google-cloud-gkeconnect-gateway-v1",
+    ],
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    deps = [
+        ":gateway_ruby_grpc",
+        ":gateway_ruby_proto",
+    ],
+)
+
+# Open Source Packages
+ruby_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-ruby",
+    deps = [
+        ":gateway_ruby_gapic",
+        ":gateway_ruby_grpc",
+        ":gateway_ruby_proto",
+    ],
+)
+
+alias(
+    name = "google-cloud-gkeconnect-gateway-v1-ruby",
+    actual = ":gkeconnect-gateway-v1-ruby",
+    deprecated = "Please use :gkeconnect-gateway-v1-ruby."
+)
+
 ##############################################################################
 # C#
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "csharp_gapic_assembly_pkg",
+    "csharp_gapic_library",
     "csharp_grpc_library",
     "csharp_proto_library",
 )
@@ -167,6 +330,33 @@ csharp_grpc_library(
     name = "gateway_csharp_grpc",
     srcs = [":gateway_proto"],
     deps = [":gateway_csharp_proto"],
+)
+
+csharp_gapic_library(
+    name = "gateway_csharp_gapic",
+    srcs = [":gateway_proto_with_info"],
+    common_resources_config = "@gax_dotnet//:Google.Api.Gax/ResourceNames/CommonResourcesConfig.json",
+    grpc_service_config = "connectgw_grpc_service_config.json",
+    deps = [
+        ":gateway_csharp_grpc",
+        ":gateway_csharp_proto",
+    ],
+)
+
+# Open Source Packages
+csharp_gapic_assembly_pkg(
+    name = "gkeconnect-gateway-v1-csharp",
+    deps = [
+        ":gateway_csharp_gapic",
+        ":gateway_csharp_grpc",
+        ":gateway_csharp_proto",
+    ],
+)
+
+alias(
+    name = "google-cloud-gkeconnect-gateway-v1-csharp",
+    actual = ":gkeconnect-gateway-v1-csharp",
+    deprecated = "Please use :gkeconnect-gateway-v1-csharp."
 )
 
 ##############################################################################

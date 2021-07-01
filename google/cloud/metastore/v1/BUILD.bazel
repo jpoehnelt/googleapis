@@ -70,8 +70,8 @@ java_grpc_library(
 java_gapic_library(
     name = "metastore_java_gapic",
     srcs = [":metastore_proto_with_info"],
-    gapic_yaml = "metastore_gapic.yaml",
     grpc_service_config = "metastore_grpc_service_config.json",
+    service_yaml = "metastore_v1.yaml",
     test_deps = [
         ":metastore_java_grpc",
     ],
@@ -97,6 +97,12 @@ java_gapic_assembly_gradle_pkg(
         ":metastore_java_proto",
         ":metastore_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1-java",
+    actual = ":metastore-v1-go",
+    deprecated = "Please use :metastore-v1-java.",
 )
 
 ##############################################################################
@@ -153,6 +159,12 @@ go_gapic_assembly_pkg(
         ":metastore_go_gapic_srcjar-test.srcjar",
         ":metastore_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-metastore-v1-go",
+    actual = ":metastore-v1-go",
+    deprecated = "Please use :metastore-v1-go.",
 )
 
 ##############################################################################
@@ -221,6 +233,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-metastore-v1-php",
+    actual = ":metastore-v1-php",
+    deprecated = "Please use :metastore-v1-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -275,11 +293,11 @@ ruby_cloud_gapic_library(
     name = "metastore_ruby_gapic",
     srcs = [":metastore_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-metastore-v1",
-        "ruby-cloud-env-prefix=METASTORE",
-        "ruby-cloud-product-url=https://cloud.google.com/dataproc-metastore/",
         "ruby-cloud-api-id=metastore.googleapis.com",
         "ruby-cloud-api-shortname=metastore",
+        "ruby-cloud-env-prefix=METASTORE",
+        "ruby-cloud-gem-name=google-cloud-metastore-v1",
+        "ruby-cloud-product-url=https://cloud.google.com/dataproc-metastore/",
     ],
     grpc_service_config = "metastore_grpc_service_config.json",
     ruby_cloud_description = "Dataproc Metastore is a fully managed, highly available within a region, autohealing serverless Apache Hive metastore (HMS) on Google Cloud for data analytics products. It supports HMS and serves as a critical component for managing the metadata of relational entities and provides interoperability between data processing applications in the open source data ecosystem.",
@@ -298,6 +316,12 @@ ruby_gapic_assembly_pkg(
         ":metastore_ruby_grpc",
         ":metastore_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1-ruby",
+    actual = ":metastore-v1-ruby",
+    deprecated = "Please use :metastore-v1-ruby.",
 )
 
 ##############################################################################
@@ -341,6 +365,12 @@ csharp_gapic_assembly_pkg(
         ":metastore_csharp_grpc",
         ":metastore_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1-csharp",
+    actual = ":metastore-v1-csharp",
+    deprecated = "Please use :metastore-v1-csharp.",
 )
 
 ##############################################################################

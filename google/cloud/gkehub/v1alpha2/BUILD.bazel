@@ -69,6 +69,7 @@ java_gapic_library(
     name = "gkehub_java_gapic",
     srcs = [":gkehub_proto_with_info"],
     grpc_service_config = "membership_grpc_service_config.json",
+    service_yaml = "gkehub_v1alpha2.yaml",
     test_deps = [
         ":gkehub_java_grpc",
     ],
@@ -94,6 +95,12 @@ java_gapic_assembly_gradle_pkg(
         ":gkehub_java_proto",
         ":gkehub_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1alpha2-java",
+    actual = ":gkehub-v1alpha2-go",
+    deprecated = "Please use :gkehub-v1alpha2-java.",
 )
 
 ##############################################################################
@@ -149,6 +156,12 @@ go_gapic_assembly_pkg(
         ":gkehub_go_gapic_srcjar-test.srcjar",
         ":gkehub_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-gkehub-v1alpha2-go",
+    actual = ":gkehub-v1alpha2-go",
+    deprecated = "Please use :gkehub-v1alpha2-go.",
 )
 
 ##############################################################################
@@ -216,6 +229,12 @@ php_gapic_assembly_pkg(
         ":gkehub_php_grpc",
         ":gkehub_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1alpha2-php",
+    actual = ":gkehub-v1alpha2-php",
+    deprecated = "Please use :gkehub-v1alpha2-php.",
 )
 
 ##############################################################################
@@ -289,6 +308,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-gkehub-v1alpha2-ruby",
+    actual = ":gkehub-v1alpha2-ruby",
+    deprecated = "Please use :gkehub-v1alpha2-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -330,6 +355,12 @@ csharp_gapic_assembly_pkg(
         ":gkehub_csharp_grpc",
         ":gkehub_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-gkehub-v1alpha2-csharp",
+    actual = ":gkehub-v1alpha2-csharp",
+    deprecated = "Please use :gkehub-v1alpha2-csharp.",
 )
 
 ##############################################################################

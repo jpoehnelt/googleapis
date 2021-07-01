@@ -71,6 +71,7 @@ java_gapic_library(
     name = "datafusion_java_gapic",
     srcs = [":datafusion_proto_with_info"],
     grpc_service_config = "datafusion_grpc_service_config.json",
+    service_yaml = "datafusion_v1beta1.yaml",
     test_deps = [
         ":datafusion_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -98,6 +99,12 @@ java_gapic_assembly_gradle_pkg(
         ":datafusion_java_proto",
         ":datafusion_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datafusion-v1beta1-java",
+    actual = ":datafusion-v1beta1-go",
+    deprecated = "Please use :datafusion-v1beta1-java.",
 )
 
 ##############################################################################
@@ -156,6 +163,12 @@ go_gapic_assembly_pkg(
         ":datafusion_go_gapic_srcjar-test.srcjar",
         ":datafusion_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-datafusion-v1beta1-go",
+    actual = ":datafusion-v1beta1-go",
+    deprecated = "Please use :datafusion-v1beta1-go.",
 )
 
 ##############################################################################
@@ -222,6 +235,12 @@ php_gapic_assembly_pkg(
         ":datafusion_php_grpc",
         ":datafusion_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datafusion-v1beta1-php",
+    actual = ":datafusion-v1beta1-php",
+    deprecated = "Please use :datafusion-v1beta1-php.",
 )
 
 ##############################################################################
@@ -295,6 +314,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-datafusion-v1beta1-ruby",
+    actual = ":datafusion-v1beta1-ruby",
+    deprecated = "Please use :datafusion-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -336,6 +361,12 @@ csharp_gapic_assembly_pkg(
         ":datafusion_csharp_grpc",
         ":datafusion_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datafusion-v1beta1-csharp",
+    actual = ":datafusion-v1beta1-csharp",
+    deprecated = "Please use :datafusion-v1beta1-csharp.",
 )
 
 ##############################################################################

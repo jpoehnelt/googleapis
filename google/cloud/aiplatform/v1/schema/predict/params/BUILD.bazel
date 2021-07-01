@@ -66,47 +66,21 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "moved_proto_library",
     "py_gapic_assembly_pkg",
     "py_gapic_library",
-    "py_grpc_library",
-    "py_proto_library",
-)
-
-moved_proto_library(
-    name = "params_moved_proto",
-    srcs = [":params_proto"],
-    deps = [
-        "//google/api:annotations_proto",
-    ],
-)
-
-py_proto_library(
-    name = "params_py_proto",
-    deps = [":params_moved_proto"],
-)
-
-py_grpc_library(
-    name = "params_py_grpc",
-    srcs = [":params_moved_proto"],
-    deps = [":params_py_proto"],
 )
 
 py_gapic_library(
     name = "params_py_gapic",
-    opt_args = [
-        "python-gapic-namespace=google.cloud.aiplatform.v1.schema.predict",
-        "python-gapic-name=params",
-    ],
     srcs = [":params_proto"],
 )
 
 # Open Source Packages
 py_gapic_assembly_pkg(
-    name = "params-py",
+    name = "params-{{version}}-py",
     deps = [
         ":params_py_gapic",
-    ]
+    ],
 )
 
 ##############################################################################

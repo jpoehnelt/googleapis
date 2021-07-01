@@ -66,6 +66,7 @@ java_gapic_library(
     name = "language_java_gapic",
     srcs = [":language_proto_with_info"],
     grpc_service_config = "language_grpc_service_config.json",
+    service_yaml = "language_v1beta2.yaml",
     test_deps = [
         ":language_java_grpc",
     ],
@@ -91,6 +92,12 @@ java_gapic_assembly_gradle_pkg(
         ":language_java_proto",
         ":language_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-language-v1beta2-java",
+    actual = ":language-v1beta2-go",
+    deprecated = "Please use :language-v1beta2-java.",
 )
 
 ##############################################################################
@@ -142,6 +149,12 @@ go_gapic_assembly_pkg(
         ":language_go_gapic_srcjar-test.srcjar",
         ":language_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-language-v1beta2-go",
+    actual = ":language-v1beta2-go",
+    deprecated = "Please use :language-v1beta2-go.",
 )
 
 ##############################################################################
@@ -208,6 +221,12 @@ php_gapic_assembly_pkg(
         ":language_php_grpc",
         ":language_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-language-v1beta2-php",
+    actual = ":language-v1beta2-php",
+    deprecated = "Please use :language-v1beta2-php.",
 )
 
 ##############################################################################
@@ -289,6 +308,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-language-v1beta2-ruby",
+    actual = ":language-v1beta2-ruby",
+    deprecated = "Please use :language-v1beta2-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -330,6 +355,12 @@ csharp_gapic_assembly_pkg(
         ":language_csharp_grpc",
         ":language_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-language-v1beta2-csharp",
+    actual = ":language-v1beta2-csharp",
+    deprecated = "Please use :language-v1beta2-csharp.",
 )
 
 ##############################################################################

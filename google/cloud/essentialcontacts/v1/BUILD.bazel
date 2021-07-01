@@ -9,42 +9,14 @@
 #    * extra_protoc_file_parameters
 # The complete list of preserved parameters can be found in the source code.
 
+# This is an API workspace, having public visibility by default makes perfect sense.
+package(default_visibility = ["//visibility:public"])
+
 ##############################################################################
 # Common
 ##############################################################################
 load("@rules_proto//proto:defs.bzl", "proto_library")
-load(
-    "@com_google_googleapis_imports//:imports.bzl",
-    "csharp_gapic_assembly_pkg",
-    "csharp_gapic_library",
-    "csharp_grpc_library",
-    "csharp_proto_library",
-    "go_gapic_assembly_pkg",
-    "go_gapic_library",
-    "go_proto_library",
-    "go_test",
-    "java_gapic_assembly_gradle_pkg",
-    "java_gapic_library",
-    "java_gapic_test",
-    "java_grpc_library",
-    "java_proto_library",
-    "nodejs_gapic_assembly_pkg",
-    "nodejs_gapic_library",
-    "proto_library_with_info",
-    "py_gapic_assembly_pkg",
-    "py_gapic_library",
-    "ruby_cloud_gapic_library",
-    "ruby_gapic_assembly_pkg",
-    "ruby_grpc_library",
-    "ruby_proto_library",
-    "php_gapic_assembly_pkg",
-    "php_gapic_library",
-    "php_grpc_library",
-    "php_proto_library",
-)
-
-# This is an API workspace, having public visibility by default makes perfect sense.
-package(default_visibility = ["//visibility:public"])
+load("@com_google_googleapis_imports//:imports.bzl", "proto_library_with_info")
 
 proto_library(
     name = "essentialcontacts_proto",
@@ -71,6 +43,18 @@ proto_library_with_info(
     ],
 )
 
+##############################################################################
+# Java
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "java_gapic_assembly_gradle_pkg",
+    "java_gapic_library",
+    "java_gapic_test",
+    "java_grpc_library",
+    "java_proto_library",
+)
+
 java_proto_library(
     name = "essentialcontacts_java_proto",
     deps = [":essentialcontacts_proto"],
@@ -86,6 +70,7 @@ java_gapic_library(
     name = "essentialcontacts_java_gapic",
     srcs = [":essentialcontacts_proto_with_info"],
     grpc_service_config = "essentialcontacts_v1_grpc_service_config.json",
+    service_yaml = "essentialcontacts_v1.yaml",
     test_deps = [
         ":essentialcontacts_java_grpc",
     ],
@@ -111,6 +96,23 @@ java_gapic_assembly_gradle_pkg(
         ":essentialcontacts_java_proto",
         ":essentialcontacts_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-essentialcontacts-v1-java",
+    actual = ":essentialcontacts-v1-go",
+    deprecated = "Please use :essentialcontacts-v1-java.",
+)
+
+##############################################################################
+# Go
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "go_gapic_assembly_pkg",
+    "go_gapic_library",
+    "go_proto_library",
+    "go_test",
 )
 
 go_proto_library(
@@ -153,14 +155,29 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-essentialcontacts-v1-go",
+    actual = ":essentialcontacts-v1-go",
+    deprecated = "Please use :essentialcontacts-v1-go.",
+)
+
+##############################################################################
+# Python
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
+    "py_gapic_library",
+)
+
 py_gapic_library(
     name = "essentialcontacts_py_gapic",
     srcs = [":essentialcontacts_proto"],
     grpc_service_config = "essentialcontacts_v1_grpc_service_config.json",
     opt_args = [
-        "warehouse-package-name=google-cloud-essential-contacts",
-        "python-gapic-namespace=google.cloud",
         "python-gapic-name=essential_contacts",
+        "python-gapic-namespace=google.cloud",
+        "warehouse-package-name=google-cloud-essential-contacts",
     ],
 )
 
@@ -170,6 +187,17 @@ py_gapic_assembly_pkg(
     deps = [
         ":essentialcontacts_py_gapic",
     ],
+)
+
+##############################################################################
+# PHP
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "php_gapic_assembly_pkg",
+    "php_gapic_library",
+    "php_grpc_library",
+    "php_proto_library",
 )
 
 php_proto_library(
@@ -204,6 +232,21 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-essentialcontacts-v1-php",
+    actual = ":essentialcontacts-v1-php",
+    deprecated = "Please use :essentialcontacts-v1-php.",
+)
+
+##############################################################################
+# Node.js
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "nodejs_gapic_assembly_pkg",
+    "nodejs_gapic_library",
+)
+
 nodejs_gapic_library(
     name = "essentialcontacts_nodejs_gapic",
     package_name = "@google-cloud/essential-contacts",
@@ -223,6 +266,17 @@ nodejs_gapic_assembly_pkg(
     ],
 )
 
+##############################################################################
+# Ruby
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
+    "ruby_grpc_library",
+    "ruby_proto_library",
+)
+
 ruby_proto_library(
     name = "essentialcontacts_ruby_proto",
     deps = [":essentialcontacts_proto"],
@@ -238,11 +292,11 @@ ruby_cloud_gapic_library(
     name = "essentialcontacts_ruby_gapic",
     srcs = [":essentialcontacts_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-essential_contacts-v1",
-        "ruby-cloud-env-prefix=ESSENTIAL_CONTACTS",
-        "ruby-cloud-product-url=https://cloud.google.com/resource-manager/docs/managing-notification-contacts/",
         "ruby-cloud-api-id=essentialcontacts.googleapis.com",
         "ruby-cloud-api-shortname=essentialcontacts",
+        "ruby-cloud-env-prefix=ESSENTIAL_CONTACTS",
+        "ruby-cloud-gem-name=google-cloud-essential_contacts-v1",
+        "ruby-cloud-product-url=https://cloud.google.com/resource-manager/docs/managing-notification-contacts/",
     ],
     grpc_service_config = "essentialcontacts_v1_grpc_service_config.json",
     ruby_cloud_description = "Many Google Cloud services, such as Cloud Billing, send out notifications to share important information with Google Cloud users. By default, these notifications are sent to members with certain Identity and Access Management (IAM) roles. With Essential Contacts, you can customize who receives notifications by providing your own list of contacts.",
@@ -261,6 +315,23 @@ ruby_gapic_assembly_pkg(
         ":essentialcontacts_ruby_grpc",
         ":essentialcontacts_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-essentialcontacts-v1-ruby",
+    actual = ":essentialcontacts-v1-ruby",
+    deprecated = "Please use :essentialcontacts-v1-ruby.",
+)
+
+##############################################################################
+# C#
+##############################################################################
+load(
+    "@com_google_googleapis_imports//:imports.bzl",
+    "csharp_gapic_assembly_pkg",
+    "csharp_gapic_library",
+    "csharp_grpc_library",
+    "csharp_proto_library",
 )
 
 csharp_proto_library(
@@ -293,6 +364,12 @@ csharp_gapic_assembly_pkg(
         ":essentialcontacts_csharp_grpc",
         ":essentialcontacts_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-essentialcontacts-v1-csharp",
+    actual = ":essentialcontacts-v1-csharp",
+    deprecated = "Please use :essentialcontacts-v1-csharp.",
 )
 
 ##############################################################################

@@ -81,6 +81,7 @@ java_gapic_library(
     name = "datacatalog_java_gapic",
     srcs = [":datacatalog_proto_with_info"],
     grpc_service_config = "datacatalog_grpc_service_config.json",
+    service_yaml = "datacatalog_v1.yaml",
     test_deps = [
         ":datacatalog_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -110,6 +111,12 @@ java_gapic_assembly_gradle_pkg(
         ":datacatalog_java_proto",
         ":datacatalog_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datacatalog-v1-java",
+    actual = ":datacatalog-v1-go",
+    deprecated = "Please use :datacatalog-v1-java.",
 )
 
 ##############################################################################
@@ -165,6 +172,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-datacatalog-v1-go",
+    actual = ":datacatalog-v1-go",
+    deprecated = "Please use :datacatalog-v1-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -214,6 +227,7 @@ php_gapic_library(
     name = "datacatalog_php_gapic",
     srcs = [":datacatalog_proto_with_info"],
     grpc_service_config = "datacatalog_grpc_service_config.json",
+    service_yaml = "datacatalog_v1.yaml",
     deps = [
         ":datacatalog_php_grpc",
         ":datacatalog_php_proto",
@@ -228,6 +242,12 @@ php_gapic_assembly_pkg(
         ":datacatalog_php_grpc",
         ":datacatalog_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datacatalog-v1-php",
+    actual = ":datacatalog-v1-php",
+    deprecated = "Please use :datacatalog-v1-php.",
 )
 
 ##############################################################################
@@ -310,6 +330,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-datacatalog-v1-ruby",
+    actual = ":datacatalog-v1-ruby",
+    deprecated = "Please use :datacatalog-v1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -351,6 +377,12 @@ csharp_gapic_assembly_pkg(
         ":datacatalog_csharp_grpc",
         ":datacatalog_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datacatalog-v1-csharp",
+    actual = ":datacatalog-v1-csharp",
+    deprecated = "Please use :datacatalog-v1-csharp.",
 )
 
 ##############################################################################

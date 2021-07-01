@@ -70,8 +70,8 @@ java_grpc_library(
 java_gapic_library(
     name = "metastore_java_gapic",
     srcs = [":metastore_proto_with_info"],
-    gapic_yaml = "metastore_gapic.yaml",
     grpc_service_config = "metastore_grpc_service_config.json",
+    service_yaml = "metastore_v1alpha.yaml",
     test_deps = [
         ":metastore_java_grpc",
     ],
@@ -97,6 +97,12 @@ java_gapic_assembly_gradle_pkg(
         ":metastore_java_proto",
         ":metastore_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1alpha-java",
+    actual = ":metastore-v1alpha-go",
+    deprecated = "Please use :metastore-v1alpha-java.",
 )
 
 ##############################################################################
@@ -155,6 +161,12 @@ go_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "gapi-cloud-metastore-v1alpha-go",
+    actual = ":metastore-v1alpha-go",
+    deprecated = "Please use :metastore-v1alpha-go.",
+)
+
 ##############################################################################
 # Python
 ##############################################################################
@@ -203,7 +215,6 @@ php_grpc_library(
 php_gapic_library(
     name = "metastore_php_gapic",
     srcs = [":metastore_proto_with_info"],
-    gapic_yaml = "metastore_gapic.yaml",
     grpc_service_config = "metastore_grpc_service_config.json",
     service_yaml = "metastore_v1alpha.yaml",
     deps = [
@@ -220,6 +231,12 @@ php_gapic_assembly_pkg(
         ":metastore_php_grpc",
         ":metastore_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1alpha-php",
+    actual = ":metastore-v1alpha-php",
+    deprecated = "Please use :metastore-v1alpha-php.",
 )
 
 ##############################################################################
@@ -293,6 +310,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-metastore-v1alpha-ruby",
+    actual = ":metastore-v1alpha-ruby",
+    deprecated = "Please use :metastore-v1alpha-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -334,6 +357,12 @@ csharp_gapic_assembly_pkg(
         ":metastore_csharp_grpc",
         ":metastore_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-metastore-v1alpha-csharp",
+    actual = ":metastore-v1alpha-csharp",
+    deprecated = "Please use :metastore-v1alpha-csharp.",
 )
 
 ##############################################################################

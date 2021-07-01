@@ -71,6 +71,7 @@ java_gapic_library(
     name = "datastream_java_gapic",
     srcs = [":datastream_proto_with_info"],
     grpc_service_config = "datastream_grpc_service_config.json",
+    service_yaml = "datastream_v1alpha1.yaml",
     test_deps = [
         ":datastream_java_grpc",
     ],
@@ -96,6 +97,12 @@ java_gapic_assembly_gradle_pkg(
         ":datastream_java_proto",
         ":datastream_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datastream-v1alpha1-java",
+    actual = ":datastream-v1alpha1-go",
+    deprecated = "Please use :datastream-v1alpha1-java.",
 )
 
 ##############################################################################
@@ -125,13 +132,13 @@ go_gapic_library(
     srcs = [":datastream_proto_with_info"],
     grpc_service_config = "datastream_grpc_service_config.json",
     importpath = "cloud.google.com/go/datastream/apiv1alpha1;datastream",
-    service_yaml = "datastream_v1alpha1.yaml",
     metadata = True,
+    service_yaml = "datastream_v1alpha1.yaml",
     deps = [
         ":datastream_go_proto",
         "//google/longrunning:longrunning_go_proto",
-        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@com_google_cloud_go//longrunning:go_default_library",
+        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@io_bazel_rules_go//proto/wkt:duration_go_proto",
     ],
 )
@@ -148,10 +155,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-datastream-v1alpha1-go",
     deps = [
         ":datastream_go_gapic",
-        ":datastream_go_gapic_srcjar-test.srcjar",
         ":datastream_go_gapic_srcjar-metadata.srcjar",
+        ":datastream_go_gapic_srcjar-test.srcjar",
         ":datastream_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-datastream-v1alpha1-go",
+    actual = ":datastream-v1alpha1-go",
+    deprecated = "Please use :datastream-v1alpha1-go.",
 )
 
 ##############################################################################
@@ -220,6 +233,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-datastream-v1alpha1-php",
+    actual = ":datastream-v1alpha1-php",
+    deprecated = "Please use :datastream-v1alpha1-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -253,8 +272,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -273,9 +292,7 @@ ruby_grpc_library(
 ruby_cloud_gapic_library(
     name = "datastream_ruby_gapic",
     srcs = [":datastream_proto_with_info"],
-    extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-datastream-v1alpha1",
-    ],
+    extra_protoc_parameters = ["ruby-cloud-gem-name=google-cloud-datastream-v1alpha1"],
     grpc_service_config = "datastream_grpc_service_config.json",
     deps = [
         ":datastream_ruby_grpc",
@@ -291,6 +308,12 @@ ruby_gapic_assembly_pkg(
         ":datastream_ruby_grpc",
         ":datastream_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datastream-v1alpha1-ruby",
+    actual = ":datastream-v1alpha1-ruby",
+    deprecated = "Please use :datastream-v1alpha1-ruby.",
 )
 
 ##############################################################################
@@ -334,6 +357,12 @@ csharp_gapic_assembly_pkg(
         ":datastream_csharp_grpc",
         ":datastream_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-datastream-v1alpha1-csharp",
+    actual = ":datastream-v1alpha1-csharp",
+    deprecated = "Please use :datastream-v1alpha1-csharp.",
 )
 
 ##############################################################################

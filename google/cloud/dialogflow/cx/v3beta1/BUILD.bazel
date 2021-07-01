@@ -91,6 +91,7 @@ java_gapic_library(
     name = "cx_java_gapic",
     srcs = [":cx_proto_with_info"],
     grpc_service_config = "dialogflow_grpc_service_config.json",
+    service_yaml = "dialogflow_v3beta1.yaml",
     test_deps = [
         ":cx_java_grpc",
     ],
@@ -129,6 +130,12 @@ java_gapic_assembly_gradle_pkg(
         ":cx_java_proto",
         ":cx_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-dialogflow-cx-v3beta1-java",
+    actual = ":dialogflow-cx-v3beta1-go",
+    deprecated = "Please use :dialogflow-cx-v3beta1-java.",
 )
 
 ##############################################################################
@@ -188,6 +195,12 @@ go_gapic_assembly_pkg(
         ":cx_go_gapic_srcjar-test.srcjar",
         ":cx_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-dialogflow-cx-v3beta1-go",
+    actual = ":dialogflow-cx-v3beta1-go",
+    deprecated = "Please use :dialogflow-cx-v3beta1-go.",
 )
 
 ##############################################################################
@@ -258,6 +271,12 @@ php_gapic_assembly_pkg(
         ":cx_php_grpc",
         ":cx_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-dialogflow-cx-v3beta1-php",
+    actual = ":dialogflow-cx-v3beta1-php",
+    deprecated = "Please use :dialogflow-cx-v3beta1-php.",
 )
 
 ##############################################################################
@@ -331,6 +350,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-dialogflow-cx-v3beta1-ruby",
+    actual = ":dialogflow-cx-v3beta1-ruby",
+    deprecated = "Please use :dialogflow-cx-v3beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -372,6 +397,12 @@ csharp_gapic_assembly_pkg(
         ":cx_csharp_grpc",
         ":cx_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-dialogflow-cx-v3beta1-csharp",
+    actual = ":dialogflow-cx-v3beta1-csharp",
+    deprecated = "Please use :dialogflow-cx-v3beta1-csharp.",
 )
 
 ##############################################################################

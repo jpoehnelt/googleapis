@@ -14,7 +14,7 @@ proto_library(
         "request_log.proto",
     ],
     deps = [
-        "//google/logging/type:type_proto",
+        "//google/logging/type:log_severity_proto",
         "@com_google_protobuf//:duration_proto",
         "@com_google_protobuf//:timestamp_proto",
     ],
@@ -54,7 +54,7 @@ go_proto_library(
     importpath = "google.golang.org/genproto/googleapis/appengine/logging/v1",
     protos = [":logging_proto"],
     deps = [
-        "//google/logging/type:type_go_proto",
+        "//google/logging/type:log_severity_go_proto",
     ],
 )
 
@@ -63,23 +63,18 @@ go_proto_library(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
+    "py_gapic_assembly_pkg",
     "py_gapic_library",
-    "py_gapic_assembly_pkg"
 )
 
 py_gapic_library(
     name = "logging_py_gapic",
     srcs = [":logging_proto"],
-    opt_args = [
-        "warehouse-package-name=google-cloud-appengine-logging",
-         "python-gapic-namespace=google.cloud",
-        "python-gapic-name=appengine_logging",
-    ],
 )
 
 # Open Source Packages
 py_gapic_assembly_pkg(
-    name = "google-cloud-appengine-logging-v1-py",
+    name = "appengine-logging-v1-py",
     deps = [
         ":logging_py_gapic",
     ],
@@ -113,6 +108,7 @@ load(
     "nodejs_gapic_assembly_pkg",
     "nodejs_gapic_library",
 )
+
 
 ##############################################################################
 # Ruby

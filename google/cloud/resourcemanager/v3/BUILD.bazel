@@ -45,9 +45,7 @@ proto_library_with_info(
     name = "resourcemanager_proto_with_info",
     deps = [
         ":resourcemanager_proto",
-        # This line was manually modified since Projects, Folders, Organizations
-        # are special cased since they are also common resources.
-        #"//google/cloud:common_resources_proto",
+        "//google/cloud:common_resources_proto",
     ],
 )
 
@@ -78,6 +76,7 @@ java_gapic_library(
     name = "resourcemanager_java_gapic",
     srcs = [":resourcemanager_proto_with_info"],
     grpc_service_config = "cloudresourcemanager_v3_grpc_service_config.json",
+    service_yaml = "cloudresourcemanager_v3.yaml",
     test_deps = [
         ":resourcemanager_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -110,6 +109,12 @@ java_gapic_assembly_gradle_pkg(
         ":resourcemanager_java_proto",
         ":resourcemanager_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-resourcemanager-v3-java",
+    actual = ":resourcemanager-v3-go",
+    deprecated = "Please use :resourcemanager-v3-java.",
 )
 
 ##############################################################################
@@ -167,6 +172,12 @@ go_gapic_assembly_pkg(
         ":resourcemanager_go_gapic_srcjar-test.srcjar",
         ":resourcemanager_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-resourcemanager-v3-go",
+    actual = ":resourcemanager-v3-go",
+    deprecated = "Please use :resourcemanager-v3-go.",
 )
 
 ##############################################################################
@@ -235,6 +246,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-resourcemanager-v3-php",
+    actual = ":resourcemanager-v3-php",
+    deprecated = "Please use :resourcemanager-v3-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -289,11 +306,11 @@ ruby_cloud_gapic_library(
     name = "resourcemanager_ruby_gapic",
     srcs = [":resourcemanager_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-resource_manager-v3",
-        "ruby-cloud-env-prefix=RESOURCE_MANAGER",
-        "ruby-cloud-product-url=https://cloud.google.com/resource-manager/",
         "ruby-cloud-api-id=cloudresourcemanager.googleapis.com",
         "ruby-cloud-api-shortname=cloudresourcemanager",
+        "ruby-cloud-env-prefix=RESOURCE_MANAGER",
+        "ruby-cloud-gem-name=google-cloud-resource_manager-v3",
+        "ruby-cloud-product-url=https://cloud.google.com/resource-manager/",
     ],
     grpc_service_config = "cloudresourcemanager_v3_grpc_service_config.json",
     ruby_cloud_description = "Google Cloud provides container resources such as organizations and projects that allow you to group and hierarchically organize other Google Cloud resources. This hierarchical organization helps you manage common aspects of your resources, such as access control and configuration settings. The Resource Manager API enables you to programmatically manage these container resources.",
@@ -312,6 +329,12 @@ ruby_gapic_assembly_pkg(
         ":resourcemanager_ruby_grpc",
         ":resourcemanager_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-resourcemanager-v3-ruby",
+    actual = ":resourcemanager-v3-ruby",
+    deprecated = "Please use :resourcemanager-v3-ruby.",
 )
 
 ##############################################################################
@@ -355,6 +378,12 @@ csharp_gapic_assembly_pkg(
         ":resourcemanager_csharp_grpc",
         ":resourcemanager_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-resourcemanager-v3-csharp",
+    actual = ":resourcemanager-v3-csharp",
+    deprecated = "Please use :resourcemanager-v3-csharp.",
 )
 
 ##############################################################################

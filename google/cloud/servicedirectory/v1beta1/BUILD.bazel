@@ -75,6 +75,7 @@ java_gapic_library(
     name = "servicedirectory_java_gapic",
     srcs = [":servicedirectory_proto_with_info"],
     grpc_service_config = "servicedirectory_grpc_service_config.json",
+    service_yaml = "servicedirectory_v1beta1.yaml",
     test_deps = [
         ":servicedirectory_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -103,6 +104,12 @@ java_gapic_assembly_gradle_pkg(
         ":servicedirectory_java_proto",
         ":servicedirectory_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-servicedirectory-v1beta1-java",
+    actual = ":servicedirectory-v1beta1-go",
+    deprecated = "Please use :servicedirectory-v1beta1-java.",
 )
 
 ##############################################################################
@@ -156,6 +163,12 @@ go_gapic_assembly_pkg(
         ":servicedirectory_go_gapic_srcjar-test.srcjar",
         ":servicedirectory_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-servicedirectory-v1beta1-go",
+    actual = ":servicedirectory-v1beta1-go",
+    deprecated = "Please use :servicedirectory-v1beta1-go.",
 )
 
 ##############################################################################
@@ -223,6 +236,12 @@ php_gapic_assembly_pkg(
         ":servicedirectory_php_grpc",
         ":servicedirectory_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-servicedirectory-v1beta1-php",
+    actual = ":servicedirectory-v1beta1-php",
+    deprecated = "Please use :servicedirectory-v1beta1-php.",
 )
 
 ##############################################################################
@@ -305,6 +324,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-servicedirectory-v1beta1-ruby",
+    actual = ":servicedirectory-v1beta1-ruby",
+    deprecated = "Please use :servicedirectory-v1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -346,6 +371,12 @@ csharp_gapic_assembly_pkg(
         ":servicedirectory_csharp_grpc",
         ":servicedirectory_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-servicedirectory-v1beta1-csharp",
+    actual = ":servicedirectory-v1beta1-csharp",
+    deprecated = "Please use :servicedirectory-v1beta1-csharp.",
 )
 
 ##############################################################################

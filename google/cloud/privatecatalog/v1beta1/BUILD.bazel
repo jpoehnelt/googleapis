@@ -72,6 +72,7 @@ java_gapic_library(
     name = "privatecatalog_java_gapic",
     srcs = [":privatecatalog_proto_with_info"],
     grpc_service_config = "cloudprivatecatalog_grpc_service_config.json",
+    service_yaml = "cloudprivatecatalog_v1beta1.yaml",
     test_deps = [
         ":privatecatalog_java_grpc",
     ],
@@ -97,6 +98,12 @@ java_gapic_assembly_gradle_pkg(
         ":privatecatalog_java_proto",
         ":privatecatalog_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-privatecatalog-v1beta1-java",
+    actual = ":privatecatalog-v1beta1-go",
+    deprecated = "Please use :privatecatalog-v1beta1-java.",
 )
 
 ##############################################################################
@@ -126,13 +133,13 @@ go_gapic_library(
     srcs = [":privatecatalog_proto_with_info"],
     grpc_service_config = "cloudprivatecatalog_grpc_service_config.json",
     importpath = "cloud.google.com/go/privatecatalog/apiv1beta1;privatecatalog",
-    service_yaml = "cloudprivatecatalog_v1beta1.yaml",
     metadata = True,
+    service_yaml = "cloudprivatecatalog_v1beta1.yaml",
     deps = [
         ":privatecatalog_go_proto",
         "//google/longrunning:longrunning_go_proto",
-        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@com_google_cloud_go//longrunning:go_default_library",
+        "@com_google_cloud_go//longrunning/autogen:go_default_library",
         "@io_bazel_rules_go//proto/wkt:any_go_proto",
         "@io_bazel_rules_go//proto/wkt:struct_go_proto",
     ],
@@ -150,10 +157,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-privatecatalog-v1beta1-go",
     deps = [
         ":privatecatalog_go_gapic",
-        ":privatecatalog_go_gapic_srcjar-test.srcjar",
         ":privatecatalog_go_gapic_srcjar-metadata.srcjar",
+        ":privatecatalog_go_gapic_srcjar-test.srcjar",
         ":privatecatalog_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-privatecatalog-v1beta1-go",
+    actual = ":privatecatalog-v1beta1-go",
+    deprecated = "Please use :privatecatalog-v1beta1-go.",
 )
 
 ##############################################################################
@@ -169,7 +182,7 @@ py_gapic_library(
     name = "privatecatalog_py_gapic",
     srcs = [":privatecatalog_proto"],
     grpc_service_config = "cloudprivatecatalog_grpc_service_config.json",
-    opt_args = ["warehouse-package-name=google-cloud-private-catalog"]
+    opt_args = ["warehouse-package-name=google-cloud-private-catalog"],
 )
 
 # Open Source Packages
@@ -223,6 +236,12 @@ php_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-privatecatalog-v1beta1-php",
+    actual = ":privatecatalog-v1beta1-php",
+    deprecated = "Please use :privatecatalog-v1beta1-php.",
+)
+
 ##############################################################################
 # Node.js
 ##############################################################################
@@ -256,8 +275,8 @@ nodejs_gapic_assembly_pkg(
 ##############################################################################
 load(
     "@com_google_googleapis_imports//:imports.bzl",
-    "ruby_gapic_assembly_pkg",
     "ruby_cloud_gapic_library",
+    "ruby_gapic_assembly_pkg",
     "ruby_grpc_library",
     "ruby_proto_library",
 )
@@ -277,11 +296,11 @@ ruby_cloud_gapic_library(
     name = "privatecatalog_ruby_gapic",
     srcs = [":privatecatalog_proto_with_info"],
     extra_protoc_parameters = [
-        "ruby-cloud-gem-name=google-cloud-private_catalog-v1beta1",
-        "ruby-cloud-env-prefix=PRIVATE_CATALOG",
-        "ruby-cloud-product-url=https://cloud.google.com/private-catalog/",
         "ruby-cloud-api-id=cloudprivatecatalog.googleapis.com",
         "ruby-cloud-api-shortname=cloudprivatecatalog",
+        "ruby-cloud-env-prefix=PRIVATE_CATALOG",
+        "ruby-cloud-gem-name=google-cloud-private_catalog-v1beta1",
+        "ruby-cloud-product-url=https://cloud.google.com/private-catalog/",
         "ruby-cloud-yard-strict=false",
     ],
     grpc_service_config = "cloudprivatecatalog_grpc_service_config.json",
@@ -301,6 +320,12 @@ ruby_gapic_assembly_pkg(
         ":privatecatalog_ruby_grpc",
         ":privatecatalog_ruby_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-privatecatalog-v1beta1-ruby",
+    actual = ":privatecatalog-v1beta1-ruby",
+    deprecated = "Please use :privatecatalog-v1beta1-ruby.",
 )
 
 ##############################################################################
@@ -344,6 +369,12 @@ csharp_gapic_assembly_pkg(
         ":privatecatalog_csharp_grpc",
         ":privatecatalog_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-privatecatalog-v1beta1-csharp",
+    actual = ":privatecatalog-v1beta1-csharp",
+    deprecated = "Please use :privatecatalog-v1beta1-csharp.",
 )
 
 ##############################################################################

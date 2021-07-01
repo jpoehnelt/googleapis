@@ -76,6 +76,7 @@ java_gapic_library(
     name = "speech_java_gapic",
     srcs = [":speech_proto_with_info"],
     grpc_service_config = "speech_grpc_service_config.json",
+    service_yaml = "speech_v1p1beta1.yaml",
     test_deps = [
         ":speech_java_grpc",
     ],
@@ -102,6 +103,12 @@ java_gapic_assembly_gradle_pkg(
         ":speech_java_proto",
         ":speech_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-speech-v1p1beta1-java",
+    actual = ":speech-v1p1beta1-go",
+    deprecated = "Please use :speech-v1p1beta1-java.",
 )
 
 ##############################################################################
@@ -160,6 +167,12 @@ go_gapic_assembly_pkg(
         ":speech_go_gapic_srcjar-test.srcjar",
         ":speech_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-speech-v1p1beta1-go",
+    actual = ":speech-v1p1beta1-go",
+    deprecated = "Please use :speech-v1p1beta1-go.",
 )
 
 ##############################################################################
@@ -226,6 +239,12 @@ php_gapic_assembly_pkg(
         ":speech_php_grpc",
         ":speech_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-speech-v1p1beta1-php",
+    actual = ":speech-v1p1beta1-php",
+    deprecated = "Please use :speech-v1p1beta1-php.",
 )
 
 ##############################################################################
@@ -307,6 +326,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-speech-v1p1beta1-ruby",
+    actual = ":speech-v1p1beta1-ruby",
+    deprecated = "Please use :speech-v1p1beta1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -348,6 +373,12 @@ csharp_gapic_assembly_pkg(
         ":speech_csharp_grpc",
         ":speech_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-speech-v1p1beta1-csharp",
+    actual = ":speech-v1p1beta1-csharp",
+    deprecated = "Please use :speech-v1p1beta1-csharp.",
 )
 
 ##############################################################################

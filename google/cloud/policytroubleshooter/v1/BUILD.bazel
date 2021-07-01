@@ -68,6 +68,7 @@ java_gapic_library(
     name = "policytroubleshooter_java_gapic",
     srcs = [":policytroubleshooter_proto_with_info"],
     grpc_service_config = "checker_grpc_service_config.json",
+    service_yaml = "policytroubleshooter_v1.yaml",
     test_deps = [
         ":policytroubleshooter_java_grpc",
         "//google/iam/v1:iam_java_grpc",
@@ -95,6 +96,12 @@ java_gapic_assembly_gradle_pkg(
         ":policytroubleshooter_java_proto",
         ":policytroubleshooter_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-policytroubleshooter-v1-java",
+    actual = ":policytroubleshooter-v1-go",
+    deprecated = "Please use :policytroubleshooter-v1-java.",
 )
 
 ##############################################################################
@@ -125,6 +132,7 @@ go_gapic_library(
     srcs = [":policytroubleshooter_proto_with_info"],
     grpc_service_config = "checker_grpc_service_config.json",
     importpath = "cloud.google.com/go/policytroubleshooter/apiv1;policytroubleshooter",
+    metadata = True,
     service_yaml = "policytroubleshooter_v1.yaml",
     deps = [
         ":policytroubleshooter_go_proto",
@@ -144,9 +152,16 @@ go_gapic_assembly_pkg(
     name = "gapi-cloud-policytroubleshooter-v1-go",
     deps = [
         ":policytroubleshooter_go_gapic",
+        ":policytroubleshooter_go_gapic_srcjar-metadata.srcjar",
         ":policytroubleshooter_go_gapic_srcjar-test.srcjar",
         ":policytroubleshooter_go_proto",
     ],
+)
+
+alias(
+    name = "gapi-cloud-policytroubleshooter-v1-go",
+    actual = ":policytroubleshooter-v1-go",
+    deprecated = "Please use :policytroubleshooter-v1-go.",
 )
 
 ##############################################################################
@@ -162,7 +177,7 @@ py_gapic_library(
     name = "policytroubleshooter_py_gapic",
     srcs = [":policytroubleshooter_proto"],
     grpc_service_config = "checker_grpc_service_config.json",
-    opt_args = ["warehouse-package-name=google-cloud-policy-troubleshooter"]
+    opt_args = ["warehouse-package-name=google-cloud-policy-troubleshooter"],
 )
 
 # Open Source Packages
@@ -199,6 +214,7 @@ php_gapic_library(
     name = "policytroubleshooter_php_gapic",
     srcs = [":policytroubleshooter_proto_with_info"],
     grpc_service_config = "checker_grpc_service_config.json",
+    service_yaml = "policytroubleshooter_v1.yaml",
     deps = [
         ":policytroubleshooter_php_grpc",
         ":policytroubleshooter_php_proto",
@@ -213,6 +229,12 @@ php_gapic_assembly_pkg(
         ":policytroubleshooter_php_grpc",
         ":policytroubleshooter_php_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-policytroubleshooter-v1-php",
+    actual = ":policytroubleshooter-v1-php",
+    deprecated = "Please use :policytroubleshooter-v1-php.",
 )
 
 ##############################################################################
@@ -294,6 +316,12 @@ ruby_gapic_assembly_pkg(
     ],
 )
 
+alias(
+    name = "google-cloud-policytroubleshooter-v1-ruby",
+    actual = ":policytroubleshooter-v1-ruby",
+    deprecated = "Please use :policytroubleshooter-v1-ruby.",
+)
+
 ##############################################################################
 # C#
 ##############################################################################
@@ -335,6 +363,12 @@ csharp_gapic_assembly_pkg(
         ":policytroubleshooter_csharp_grpc",
         ":policytroubleshooter_csharp_proto",
     ],
+)
+
+alias(
+    name = "google-cloud-policytroubleshooter-v1-csharp",
+    actual = ":policytroubleshooter-v1-csharp",
+    deprecated = "Please use :policytroubleshooter-v1-csharp.",
 )
 
 ##############################################################################
